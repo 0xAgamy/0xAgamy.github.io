@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mohamed Elagamy | AI Engineer & Machine Learning Specialist</title>
+  <meta name="description" content="AI Engineer specializing in RAG pipelines, real-time computer vision, NLP transformers, and production-ready ML systems."/>
+  <meta name="keywords" content="AI Engineer, Machine Learning, RAG, Computer Vision, NLP, PyTorch, FastAPI, Docker"/>
+  <meta name="author" content="Mohamed Elagamy"/>
+  
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Mohamed Elagamy | AI Engineer"/>
+  <meta property="og:description" content="Building production-ready intelligent systems: RAG, CV, NLP, MLOps"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://0xagamy.github.io"/>
+  <meta property="og:image" content="https://0xagamy.github.io/og-image.png"/>
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  
+  <!-- GSAP for Advanced Animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
+  <!-- Lenis for Smooth Scrolling -->
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+  
+  <style>
+    /* ===== CSS VARIABLES & THEME ===== */
+    :root {
+      /* Colors - Dark Theme */
+      --bg-primary: #0a0e17;
+      --bg-secondary: #111827;
+      --bg-card: #1e293b;
+      --bg-glass: rgba(30, 41, 59, 0.65);
+      --bg-glass-hover: rgba(30, 41, 59, 0.85);
+      
+      --accent-primary: #3b82f6;
+      --accent-secondary: #8b5cf6;
+      --accent-tertiary: #06b6d4;
+      --accent-gradient: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary));
+      --accent-glow: rgba(59, 130, 246, 0.35);
+      
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      
+      --border-color: #334155;
+      --border-glow: rgba(59, 130, 246, 0.2);
+      
+      --success: #10b981;
+      --warning: #f59e0b;
+      --error: #ef4444;
+      
+      /* Shadows & Depth */
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.4), 0 2px 4px -1px rgba(0,0,0,0.3);
+      --shadow-lg: 0 10px 25px -5px rgba(0,0,0,0.5), 0 8px 10px -6px rgba(0,0,0,0.4);
+      --shadow-glow: 0 0 30px var(--accent-glow);
+      --shadow-card: 0 20px 40px -10px rgba(0,0,0,0.6);
+      
+      /* Radii */
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      --radius-full: 9999px;
+      
+      /* Transitions */
+      --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+      
+      /* Layout */
+      --container-max: 1280px;
+      --nav-height: 80px;
+      --section-padding: 6rem;
+      
+      /* Cursor */
+      --cursor-size: 30px;
+      --cursor-follower-size: 40px;
+    }
+    
+    [data-theme="light"] {
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-card: #ffffff;
+      --bg-glass: rgba(255, 255, 255, 0.75);
+      --bg-glass-hover: rgba(255, 255, 255, 0.95);
+      
+      --accent-primary: #2563eb;
+      --accent-secondary: #7c3aed;
+      --accent-tertiary: #0891b2;
+      --accent-glow: rgba(37, 99, 235, 0.2);
+      
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      
+      --border-color: #e2e8f0;
+      --border-glow: rgba(37, 99, 235, 0.15);
+      
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.12);
+      --shadow-lg: 0 10px 25px -5px rgba(0,0,0,0.18);
+      --shadow-card: 0 20px 40px -10px rgba(0,0,0,0.15);
+    }
+    
+    /* ===== BASE STYLES ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--nav-height); }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+/*       cursor: none; */
+    }
+    body.cursor-default { cursor: auto; }
+    a { color: var(--accent-primary); text-decoration: none; transition: var(--transition-fast); }
+    a:hover { color: var(--accent-secondary); }
+    
+    /* Animated Gradient Mesh Background */
+    .bg-mesh {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: 
+        radial-gradient(ellipse at 20% 80%, rgba(59, 130, 246, 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(6, 182, 212, 0.08) 0%, transparent 70%);
+      z-index: -3; animation: meshFloat 20s ease-in-out infinite alternate; pointer-events: none;
+    }
+    @keyframes meshFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(2%, -1%) scale(1.02); }
+      50% { transform: translate(-1%, 2%) scale(0.98); }
+      75% { transform: translate(1%, 1%) scale(1.01); }
+    }
+    
+    /* Neural Network Particle Canvas */
+    #particles-canvas {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      z-index: -2; opacity: 0.5; pointer-events: none;
+    }
+    
+    /* ===== CUSTOM CURSOR ===== */
+    .cursor {
+      position: fixed;
+      width: 10px; height: 10px;
+      background: #ffffff;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none; z-index: 99999;
+      top: -100px; left: -100px;
+      transition: transform 0.12s ease, width 0.25s ease, height 0.25s ease, background 0.25s ease;
+      box-shadow: 0 0 10px rgba(59,130,246,0.8), 0 0 20px rgba(59,130,246,0.4);
+      will-change: transform, left, top;
+    }
+    .cursor-follower {
+      position: fixed;
+      width: 36px; height: 36px;
+      border: 1.5px solid rgba(59,130,246,0.7);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none; z-index: 99998;
+      top: -100px; left: -100px;
+      transition: border-color 0.3s ease, width 0.35s ease, height 0.35s ease, opacity 0.3s ease;
+      will-change: transform, left, top;
+      backdrop-filter: blur(0px);
+    }
+    .cursor.hover {
+      width: 16px; height: 16px;
+      background: var(--accent-primary);
+      box-shadow: 0 0 16px rgba(59,130,246,1), 0 0 32px rgba(59,130,246,0.6);
+    }
+    .cursor-follower.hover {
+      width: 52px; height: 52px;
+      border-color: rgba(59,130,246,0.9);
+      opacity: 0.8;
+    }
+    .cursor.click {
+      transform: translate(-50%,-50%) scale(0.6);
+      background: var(--accent-secondary);
+      box-shadow: 0 0 20px rgba(139,92,246,1);
+    }
+    .cursor-follower.click {
+      width: 24px; height: 24px;
+      border-color: var(--accent-secondary);
+    }
+    /* Cursor label that appears on link hover */
+    .cursor-label {
+      position: fixed; top: -100px; left: -100px;
+      background: var(--accent-primary); color: white;
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em;
+      padding: 4px 10px; border-radius: 20px;
+      pointer-events: none; z-index: 99997;
+      opacity: 0; transform: translate(-50%, -130%) scale(0.8);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      white-space: nowrap; font-family: 'Fira Code', monospace;
+    }
+    .cursor-label.show { opacity: 1; transform: translate(-50%, -160%) scale(1); }
+    
+    /* ===== PRELOADER ===== */
+    .preloader {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: var(--bg-primary); display: flex; align-items: center; justify-content: center;
+      z-index: 10000; transition: opacity var(--transition-slow), visibility var(--transition-slow);
+    }
+    .preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .preloader-content { text-align: center; }
+    .preloader-logo {
+      font-size: 3rem; font-weight: 800; background: var(--accent-gradient);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 1.5rem; animation: pulse 1.5s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.7; transform: scale(0.95); } }
+    .preloader-bar { width: 200px; height: 4px; background: var(--bg-secondary); border-radius: var(--radius-full); overflow: hidden; margin: 0 auto; }
+    .preloader-progress { height: 100%; width: 0%; background: var(--accent-gradient); border-radius: var(--radius-full); animation: loadProgress 2s ease-out forwards; }
+    @keyframes loadProgress { to { width: 100%; } }
+    
+    /* ===== SCROLL PROGRESS ===== */
+    #scroll-progress {
+      position: fixed; top: 0; left: 0; height: 3px; background: var(--accent-gradient);
+      z-index: 1000; width: 0%; transform-origin: left; box-shadow: 0 0 10px var(--accent-glow);
+    }
+    
+    /* ===== NAVBAR ===== */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%; height: var(--nav-height);
+      background: var(--bg-glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-color); z-index: 100; transition: var(--transition-normal);
+    }
+    nav.scrolled { height: 70px; box-shadow: var(--shadow-md); background: var(--bg-glass-hover); }
+    .nav-container {
+      max-width: var(--container-max); margin: 0 auto; padding: 0 2rem;
+      height: 100%; display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo {
+      font-size: 1.4rem; font-weight: 800; background: var(--accent-gradient);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      display: flex; align-items: center; gap: 0.5rem; text-decoration: none; position: relative;
+    }
+    .logo::after {
+      content: ''; position: absolute; bottom: -8px; left: 0;
+      width: 0; height: 2px; background: var(--accent-gradient);
+      transition: var(--transition-normal); border-radius: var(--radius-full);
+    }
+    .logo:hover::after { width: 100%; }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      color: var(--text-secondary); font-weight: 500; font-size: 0.95rem;
+      text-decoration: none; position: relative; padding: 0.5rem 0; transition: var(--transition-fast);
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 2px; background: var(--accent-gradient);
+      transition: var(--transition-normal); border-radius: var(--radius-full);
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--text-primary); }
+    .nav-links a.active::after, .nav-links a:hover::after { width: 100%; }
+    .nav-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text-primary); background: none; border: none; }
+    
+    /* ===== HERO SECTION ===== */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding-top: var(--nav-height); padding-bottom: 4rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-container {
+      max-width: var(--container-max); margin: 0 auto; padding: 0 2rem;
+      display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; width: 100%;
+    }
+    .hero-content { max-width: 650px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.4rem 1rem; background: var(--bg-glass);
+      border: 1px solid var(--border-color); border-radius: var(--radius-full);
+      font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem;
+      animation: fadeInUp 0.6s ease-out;
+    }
+    .hero-badge i { color: var(--success); }
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 1rem;
+      animation: fadeInUp 0.6s ease-out 0.1s both;
+    }
+    .hero-title .gradient-text {
+      background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      position: relative; display: inline;
+    }
+    .hero-title .gradient-text::after {
+      content: ''; position: absolute; bottom: 8px; left: 0;
+      width: 100%; height: 12px; background: var(--accent-glow);
+      border-radius: 8px; z-index: -1; opacity: 0.5; filter: blur(4px);
+    }
+    .hero-subtitle {
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem); color: var(--text-secondary);
+      margin-bottom: 1.5rem; font-weight: 400; animation: fadeInUp 0.6s ease-out 0.2s both;
+    }
+    .hero-description {
+      color: var(--text-muted); margin-bottom: 2.5rem; font-size: 1.05rem;
+      max-width: 550px; animation: fadeInUp 0.6s ease-out 0.3s both;
+    }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeInUp 0.6s ease-out 0.4s both; }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+      padding: 0.9rem 1.8rem; background: var(--accent-gradient); color: white;
+      border: none; border-radius: var(--radius-md); font-weight: 600; font-size: 1rem;
+      text-decoration: none; cursor: pointer; position: relative; overflow: hidden;
+      transition: var(--transition-normal); box-shadow: var(--shadow-md);
+    }
+    .btn::before {
+      content: ''; position: absolute; top: 0; left: -100%;
+      width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+    .btn:hover::before { left: 100%; }
+    .btn:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg), var(--shadow-glow); }
+    .btn:active { transform: translateY(-1px); transition: var(--transition-fast); }
+    .btn.outline { background: transparent; border: 2px solid var(--accent-primary); color: var(--accent-primary); }
+    .btn.outline:hover { background: var(--accent-primary); color: white; }
+    .btn.ghost { background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-primary); }
+    .btn.ghost:hover { border-color: var(--accent-primary); background: var(--bg-glass-hover); }
+    
+    /* ===== HERO VISUAL ===== */
+    .hero-visual { position: relative; display: flex; align-items: center; justify-content: center; animation: fadeIn 0.8s ease-out 0.5s both; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .hero-visual svg { max-width: 100%; height: auto; filter: drop-shadow(var(--shadow-lg)); }
+    .floating-element { animation: float 6s ease-in-out infinite; }
+    .floating-element.delay-1 { animation-delay: -2s; }
+    .floating-element.delay-2 { animation-delay: -4s; }
+    @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-20px) rotate(2deg); } }
+    
+    /* ===== SECTIONS ===== */
+    section { padding: var(--section-padding) 0; position: relative; }
+    .section-container { max-width: var(--container-max); margin: 0 auto; padding: 0 2rem; }
+    .section-header { text-align: center; margin-bottom: 4rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+    .section-header .badge {
+      display: inline-block; padding: 0.3rem 1rem; background: var(--bg-glass);
+      border: 1px solid var(--border-color); border-radius: var(--radius-full);
+      font-size: 0.8rem; color: var(--accent-primary); font-weight: 600;
+      margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 1rem;
+      position: relative; display: inline-block;
+    }
+    .section-title::after {
+      content: ''; position: absolute; bottom: -12px; left: 50%;
+      transform: translateX(-50%); width: 80px; height: 4px;
+      background: var(--accent-gradient); border-radius: var(--radius-full);
+    }
+    .section-subtitle { color: var(--text-muted); margin-top: 1.5rem; font-size: 1.1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+    
+    /* ===== ABOUT SECTION ===== */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .about-content p { color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1.05rem; }
+    .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    .stat-card {
+      background: var(--bg-card); padding: 1.5rem; border-radius: var(--radius-md);
+      border: 1px solid var(--border-color); text-align: center; transition: var(--transition-normal);
+      position: relative; overflow: hidden;
+    }
+    .stat-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--accent-gradient); transform: scaleX(0); transform-origin: left;
+      transition: transform var(--transition-normal);
+    }
+    .stat-card:hover { transform: translateY(-5px); border-color: var(--accent-primary); box-shadow: var(--shadow-lg); }
+    .stat-card:hover::before { transform: scaleX(1); }
+    .stat-value {
+      font-size: 2.2rem; font-weight: 800; background: var(--accent-gradient);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.3rem;
+    }
+    .stat-label { color: var(--text-muted); font-size: 0.9rem; font-weight: 500; }
+    
+    /* ===== SKILLS SECTION ===== */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .skill-card {
+      background: var(--bg-card); border-radius: var(--radius-md); padding: 1.8rem;
+      border: 1px solid var(--border-color); transition: var(--transition-normal);
+      position: relative; overflow: hidden;
+    }
+    .skill-card::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--accent-gradient); opacity: 0; transition: opacity var(--transition-normal); z-index: -1;
+    }
+    .skill-card:hover { transform: translateY(-5px); border-color: var(--accent-primary); box-shadow: var(--shadow-lg); }
+    .skill-card:hover::after { opacity: 0.05; }
+    .skill-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.2rem; }
+    .skill-icon {
+      width: 40px; height: 40px; border-radius: var(--radius-sm); background: var(--bg-glass);
+      display: flex; align-items: center; justify-content: center; color: var(--accent-primary); font-size: 1.1rem;
+    }
+    .skill-title { font-weight: 600; font-size: 1.1rem; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .skill-tag {
+      padding: 0.35rem 0.8rem; background: var(--bg-secondary); border-radius: var(--radius-full);
+      font-size: 0.8rem; font-family: 'Fira Code', monospace; color: var(--text-secondary);
+      transition: var(--transition-fast); border: 1px solid transparent; cursor: default;
+    }
+    .skill-tag:hover { background: var(--accent-primary); color: white; border-color: var(--accent-primary); transform: scale(1.05); }
+    .skill-progress { margin-top: 1rem; }
+    .skill-progress-header { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem; }
+    .skill-progress-bar { height: 6px; background: var(--bg-secondary); border-radius: var(--radius-full); overflow: hidden; }
+    .skill-progress-fill { height: 100%; background: var(--accent-gradient); border-radius: var(--radius-full); width: 0%; transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1); }
+    
+    /* ===== PROJECTS SECTION ===== */
+    .projects-filter { display: flex; justify-content: center; gap: 0.8rem; margin-bottom: 3rem; flex-wrap: wrap; }
+    .filter-btn {
+      padding: 0.5rem 1.2rem; background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: var(--radius-full); font-size: 0.9rem; color: var(--text-secondary);
+      cursor: pointer; transition: var(--transition-fast);
+    }
+    .filter-btn:hover, .filter-btn.active { background: var(--accent-primary); color: white; border-color: var(--accent-primary); }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2rem; }
+    .project-card {
+      background: var(--bg-card); border-radius: var(--radius-lg); overflow: hidden;
+      border: 1px solid var(--border-color); transition: var(--transition-normal);
+      position: relative; display: flex; flex-direction: column; cursor: pointer;
+      transform-style: preserve-3d; perspective: 1000px;
+    }
+    .project-card:hover { transform: translateY(-8px) rotateX(2deg); border-color: var(--accent-primary); box-shadow: var(--shadow-card), var(--shadow-glow); }
+    .project-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: var(--accent-gradient); transform: scaleX(0); transform-origin: left;
+      transition: transform var(--transition-normal); z-index: 2;
+    }
+    .project-card:hover::before { transform: scaleX(1); }
+    .project-image {
+      height: 200px; background: var(--bg-secondary); position: relative;
+      overflow: hidden; display: flex; align-items: center; justify-content: center;
+    }
+    .project-image-placeholder { font-size: 3rem; color: var(--text-muted); opacity: 0.5; }
+    .project-image-overlay {
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--accent-gradient); opacity: 0; display: flex;
+      align-items: center; justify-content: center; transition: var(--transition-normal);
+    }
+    .project-card:hover .project-image-overlay { opacity: 0.15; }
+    .project-content { padding: 1.8rem; flex: 1; display: flex; flex-direction: column; }
+    .project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; gap: 1rem; }
+    .project-title { font-size: 1.3rem; font-weight: 700; line-height: 1.3; }
+    .project-links { display: flex; gap: 0.8rem; }
+    .project-links a {
+      color: var(--text-muted); font-size: 1.1rem; transition: var(--transition-fast);
+      width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+      border-radius: var(--radius-sm);
+    }
+    .project-links a:hover { color: var(--accent-primary); background: var(--bg-glass-hover); transform: scale(1.1); }
+    .project-description { color: var(--text-secondary); margin-bottom: 1.5rem; flex: 1; font-size: 0.95rem; line-height: 1.6; }
+    .project-features { margin-bottom: 1.5rem; padding-left: 1.2rem; }
+    .project-features li {
+      color: var(--text-muted); margin-bottom: 0.4rem; font-size: 0.9rem;
+      list-style-type: none; position: relative; padding-left: 1.3rem;
+    }
+    .project-features li::before { content: '▹'; position: absolute; left: 0; color: var(--accent-primary); font-weight: 600; }
+    .project-tech { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border-color); }
+    .tech-badge {
+      padding: 0.3rem 0.7rem; background: var(--bg-secondary); border-radius: 6px;
+      font-size: 0.75rem; font-family: 'Fira Code', monospace; color: var(--text-secondary);
+      transition: var(--transition-fast);
+    }
+    .tech-badge:hover { background: var(--accent-primary); color: white; transform: scale(1.05); }
+    .project-metric {
+      display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.9rem;
+      background: rgba(16, 185, 129, 0.15); color: var(--success);
+      border-radius: var(--radius-full); font-size: 0.85rem; font-weight: 500; margin-top: 0.8rem;
+    }
+    
+    /* ===== EDUCATION SECTION ===== */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 2px; background: var(--accent-gradient); border-radius: var(--radius-full);
+    }
+    .timeline-item {
+      position: relative; padding-left: 2rem; margin-bottom: 2.5rem;
+      opacity: 1; transform: translateX(-20px); transition: var(--transition-normal);
+    }
+    .timeline-item.visible { opacity: 5; transform: translateX(0); }
+    .timeline-item::before {
+      content: ''; position: absolute; left: -9px; top: 8px;
+      width: 20px; height: 20px; border-radius: 50%;
+      background: var(--accent-gradient); border: 3px solid var(--bg-primary);
+      box-shadow: 0 0 0 2px var(--border-color);
+    }
+    .timeline-date {
+      display: inline-block; padding: 0.3rem 0.8rem; background: var(--bg-glass);
+      border: 1px solid var(--border-color); border-radius: var(--radius-full);
+      font-size: 0.85rem; color: var(--accent-primary); font-weight: 600; margin-bottom: 0.8rem;
+    }
+    .timeline-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .timeline-subtitle { color: var(--text-secondary); margin-bottom: 0.8rem; font-size: 1rem; }
+    .timeline-description { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+    
+    /* ===== CONTACT SECTION ===== */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .contact-info h3 { font-size: 1.5rem; margin-bottom: 1.5rem; }
+    .contact-description { color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.7; }
+    .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-link {
+      display: flex; align-items: center; gap: 1rem; padding: 1rem 1.3rem;
+      background: var(--bg-card); border-radius: var(--radius-md);
+      border: 1px solid var(--border-color); text-decoration: none;
+      color: var(--text-primary); transition: var(--transition-normal);
+      position: relative; overflow: hidden;
+    }
+    .contact-link::before {
+      content: ''; position: absolute; top: 0; left: -100%;
+      width: 100%; height: 100%; background: var(--accent-gradient);
+      opacity: 0.1; transition: left var(--transition-normal);
+    }
+    .contact-link:hover { transform: translateX(8px); border-color: var(--accent-primary); box-shadow: var(--shadow-md); }
+    .contact-link:hover::before { left: 100%; }
+    .contact-link i { font-size: 1.3rem; color: var(--accent-primary); width: 24px; text-align: center; flex-shrink: 0; }
+    
+    /* ===== TOAST NOTIFICATION ===== */
+    .toast {
+      position: fixed; bottom: 2rem; right: 2rem; padding: 1rem 1.5rem;
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: var(--radius-md); box-shadow: var(--shadow-lg);
+      display: flex; align-items: center; gap: 0.8rem; z-index: 3000;
+      transform: translateX(400px); opacity: 0; transition: var(--transition-normal);
+      max-width: 350px;
+    }
+    .toast.show { transform: translateX(0); opacity: 1; }
+    .toast.success { border-left: 4px solid var(--success); }
+    .toast.error { border-left: 4px solid var(--error); }
+    .toast i { font-size: 1.2rem; }
+    .toast.success i { color: var(--success); }
+    .toast.error i { color: var(--error); }
+    
+    /* ===== FOOTER ===== */
+    footer { padding: 3rem 0; text-align: center; border-top: 1px solid var(--border-color); margin-top: 2rem; }
+    .footer-content { max-width: var(--container-max); margin: 0 auto; padding: 0 2rem; }
+    .footer-logo {
+      font-size: 1.3rem; font-weight: 800; background: var(--accent-gradient);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem; display: inline-block;
+    }
+    .footer-description { color: var(--text-muted); margin-bottom: 1.5rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin: 1.5rem 0; flex-wrap: wrap; }
+    .footer-links a {
+      color: var(--text-secondary); text-decoration: none; display: flex;
+      align-items: center; gap: 0.4rem; transition: var(--transition-fast); font-size: 0.95rem;
+    }
+    .footer-links a:hover { color: var(--accent-primary); transform: translateY(-2px); }
+    .footer-copyright { color: var(--text-muted); font-size: 0.9rem; margin-top: 1.5rem; }
+    
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .hero-container { grid-template-columns: 1fr; text-align: center; }
+      .hero-content { margin: 0 auto; }
+      .hero-cta { justify-content: center; }
+      .hero-visual { order: -1; margin-bottom: 2rem; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      :root { --nav-height: 70px; --section-padding: 4rem; }
+      .nav-links {
+        position: fixed; top: var(--nav-height); left: 0; right: 0;
+        background: var(--bg-secondary); flex-direction: column;
+        padding: 2rem; gap: 1.5rem; border-bottom: 1px solid var(--border-color);
+        transform: translateY(-150%); transition: var(--transition-normal); z-index: 99;
+      }
+      .nav-links.active { transform: translateY(0); }
+      .nav-toggle { display: flex; }
+      .hero-title { font-size: 2.5rem; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .cursor, .cursor-follower { display: none; }
+      body { cursor: auto; }
+    }
+    @media (max-width: 480px) {
+      .hero-title { font-size: 2rem; }
+      .hero-subtitle { font-size: 1.1rem; }
+      .btn { padding: 0.8rem 1.5rem; font-size: 0.95rem; }
+      .about-stats { grid-template-columns: 1fr; }
+      .section-title { font-size: 1.8rem; }
+    }
+    
+    /* ===== THEME TOGGLE ===== */
+    .theme-toggle {
+      width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-color);
+      background: var(--bg-card); cursor: pointer; display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; transition: var(--transition-normal); color: var(--text-primary); flex-shrink: 0;
+    }
+    .theme-toggle:hover { border-color: var(--accent-primary); background: var(--bg-glass-hover); transform: rotate(20deg); }
+
+    /* ===== NAV DOWNLOAD BTN ===== */
+    .nav-download {
+      padding: 0.45rem 1.1rem; border-radius: var(--radius-md); font-size: 0.85rem; font-weight: 600;
+      background: var(--accent-gradient); color: white; border: none; cursor: pointer; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 0.4rem; transition: var(--transition-fast);
+      white-space: nowrap;
+    }
+    .nav-download:hover { opacity: 0.9; transform: translateY(-1px); color: white; }
+
+    /* ===== NAV ACTIONS GROUP ===== */
+    .nav-actions { display: flex; align-items: center; gap: 0.75rem; }
+
+    /* ===== TYPEWRITER CURSOR ===== */
+    .typed-text::after {
+      content: '|'; color: var(--accent-primary);
+      animation: blink 0.9s step-end infinite;
+      margin-left: 2px;
+    }
+    @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+    /* ===== SCROLL TO TOP ===== */
+    .scroll-top {
+      position: fixed; bottom: 2rem; right: 2rem; width: 48px; height: 48px;
+      background: var(--accent-gradient); border: none; border-radius: 50%; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem;
+      z-index: 200; box-shadow: var(--shadow-lg);
+      transform: translateY(80px); opacity: 0;
+      transition: transform var(--transition-normal), opacity var(--transition-normal), box-shadow var(--transition-fast);
+    }
+    .scroll-top.visible { transform: translateY(0); opacity: 1; }
+    .scroll-top:hover { box-shadow: var(--shadow-glow), var(--shadow-lg); transform: translateY(-3px); }
+
+    /* ===== SPOTLIGHT EFFECT ON CARDS ===== */
+    .project-card, .skill-card, .stat-card {
+      --spot-x: 50%; --spot-y: 50%;
+    }
+    .project-card .spotlight, .skill-card .spotlight, .stat-card .spotlight {
+      position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 1;
+      background: radial-gradient(circle at var(--spot-x) var(--spot-y), rgba(255,255,255,0.06) 0%, transparent 60%);
+      opacity: 0; transition: opacity var(--transition-fast);
+    }
+    .project-card:hover .spotlight, .skill-card:hover .spotlight, .stat-card:hover .spotlight { opacity: 1; }
+    .project-card > *, .skill-card > *, .stat-card > * { position: relative; z-index: 2; }
+
+    /* ===== ENHANCED PROJECT IMAGES ===== */
+    .project-image { position: relative; overflow: hidden; }
+    .project-img-bg {
+      position: absolute; inset: 0; opacity: 0.18;
+      transition: opacity var(--transition-normal), transform var(--transition-slow);
+    }
+    .project-card:hover .project-img-bg { opacity: 0.28; transform: scale(1.08); }
+    .project-image-icon {
+      font-size: 3.5rem; z-index: 2; position: relative;
+      filter: drop-shadow(0 0 20px rgba(59,130,246,0.5));
+      transition: transform var(--transition-normal);
+    }
+    .project-card:hover .project-image-icon { transform: scale(1.15) translateY(-4px); }
+
+    /* ===== FEATURED BADGE ===== */
+    .featured-badge {
+      position: absolute; top: 1rem; right: 1rem; z-index: 5;
+      background: linear-gradient(135deg, #f59e0b, #ef4444);
+      color: white; padding: 0.25rem 0.7rem; border-radius: var(--radius-full);
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .project-card.featured { border-color: rgba(59,130,246,0.4); }
+    .project-card.featured::after {
+      content: ''; position: absolute; inset: -1px; border-radius: inherit;
+      background: var(--accent-gradient); z-index: -1; opacity: 0;
+      transition: opacity var(--transition-normal);
+    }
+    .project-card.featured:hover::after { opacity: 0.15; }
+
+    /* ===== HAMBURGER ANIMATION ===== */
+    .nav-toggle { position: relative; }
+    .nav-toggle .bar {
+      display: block; width: 22px; height: 2px; background: var(--text-primary);
+      border-radius: 2px; transition: var(--transition-normal); margin: 5px auto;
+    }
+    .nav-toggle.open .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open .bar:nth-child(2) { opacity: 0; }
+    .nav-toggle.open .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ===== ENHANCED PRELOADER ===== */
+    .preloader-dots { display: flex; gap: 0.5rem; justify-content: center; margin-top: 1.5rem; }
+    .preloader-dots span {
+      width: 8px; height: 8px; border-radius: 50%; background: var(--accent-primary);
+      animation: dotBounce 1.2s ease-in-out infinite;
+    }
+    .preloader-dots span:nth-child(2) { animation-delay: 0.2s; background: var(--accent-secondary); }
+    .preloader-dots span:nth-child(3) { animation-delay: 0.4s; background: var(--accent-tertiary); }
+    @keyframes dotBounce { 0%,60%,100% { transform: translateY(0); } 30% { transform: translateY(-12px); } }
+    .preloader-code {
+      font-family: 'Fira Code', monospace; font-size: 0.8rem;
+      color: var(--text-muted); margin-top: 1.2rem; min-height: 1.2rem;
+    }
+
+    /* ===== ABOUT TECH GRID ===== */
+    .about-tech-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 0.8rem; margin-top: 1.5rem;
+    }
+    .about-tech-item {
+      display: flex; align-items: center; gap: 0.5rem; padding: 0.55rem 0.8rem;
+      background: var(--bg-secondary); border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm); font-size: 0.78rem; font-family: 'Fira Code', monospace;
+      color: var(--text-secondary); transition: var(--transition-fast);
+    }
+    .about-tech-item:hover { border-color: var(--accent-primary); color: var(--accent-primary); background: var(--bg-glass); transform: scale(1.03); }
+    .about-tech-item i { font-size: 0.9rem; color: var(--accent-primary); }
+
+    /* ===== SECTION DIVIDER ===== */
+    .section-divider {
+      width: 100%; height: 1px; margin: 0;
+      background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+    }
+
+    /* ===== CONTACT FORM ===== */
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label { font-size: 0.85rem; color: var(--text-secondary); font-weight: 500; }
+    .form-group input, .form-group textarea {
+      padding: 0.75rem 1rem; background: var(--bg-secondary); border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm); color: var(--text-primary); font-family: inherit; font-size: 0.9rem;
+      transition: var(--transition-fast); resize: vertical;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none; border-color: var(--accent-primary);
+      box-shadow: 0 0 0 3px var(--border-glow);
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: var(--text-muted); }
+
+    /* ===== NAV ENHANCEMENTS ===== */
+    .nav-container { gap: 1rem; }
+    .logo .logo-dot { display: inline-block; width: 8px; height: 8px; background: var(--accent-primary); border-radius: 50%; margin-left: 2px; animation: logoPulse 2s ease-in-out infinite; vertical-align: middle; box-shadow: 0 0 8px var(--accent-primary); }
+    @keyframes logoPulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.5);opacity:0.6} }
+
+    /* ===== HERO ENHANCEMENTS ===== */
+    .hero-badge .badge-dot { width:8px;height:8px;background:var(--success);border-radius:50%;animation:badgePulse 1.5s ease infinite;box-shadow:0 0 6px var(--success); }
+    @keyframes badgePulse { 0%,100%{box-shadow:0 0 6px var(--success)} 50%{box-shadow:0 0 14px var(--success), 0 0 24px rgba(16,185,129,0.4)} }
+    .hero-tech-strip {
+      display:flex; flex-wrap:wrap; gap:0.6rem; margin-top:1.5rem;
+      animation: fadeInUp 0.6s ease-out 0.45s both;
+    }
+    .hero-tech-chip {
+      padding:0.25rem 0.75rem; border-radius:var(--radius-full);
+      background:rgba(59,130,246,0.08); border:1px solid rgba(59,130,246,0.2);
+      font-family:'Fira Code',monospace; font-size:0.72rem; color:var(--text-secondary);
+      transition:var(--transition-fast);
+    }
+    .hero-tech-chip:hover { background:rgba(59,130,246,0.18); border-color:var(--accent-primary); color:var(--accent-primary); }
+
+    /* ===== SECTION ENHANCEMENTS ===== */
+    .section-badge {
+      display:inline-flex; align-items:center; gap:0.5rem; padding:0.3rem 1rem;
+      background:var(--bg-glass); border:1px solid var(--border-color);
+      border-radius:var(--radius-full); font-size:0.78rem; color:var(--accent-primary);
+      font-weight:600; margin-bottom:1rem; letter-spacing:0.08em;
+    }
+    .section-badge::before { content:''; width:6px;height:6px;background:var(--accent-primary);border-radius:50%; }
+
+    /* ===== PROJECT CARD ENHANCEMENTS ===== */
+    .project-card { transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), border-color 0.3s, box-shadow 0.3s; }
+    .project-status {
+      position:absolute; top:1rem; left:1rem; z-index:5;
+      display:inline-flex; align-items:center; gap:0.4rem;
+      background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.3);
+      color:var(--success); padding:0.2rem 0.7rem; border-radius:var(--radius-full);
+      font-size:0.68rem; font-weight:600; letter-spacing:0.05em;
+    }
+    .project-status::before { content:''; width:5px;height:5px;background:var(--success);border-radius:50%;animation:badgePulse 1.8s ease infinite; }
+
+    /* ===== SKILL ICON COLORS ===== */
+    .skill-card:nth-child(1) .skill-icon { background:rgba(59,130,246,0.12); color:#3b82f6; }
+    .skill-card:nth-child(2) .skill-icon { background:rgba(139,92,246,0.12); color:#8b5cf6; }
+    .skill-card:nth-child(3) .skill-icon { background:rgba(6,182,212,0.12); color:#06b6d4; }
+    .skill-card:nth-child(4) .skill-icon { background:rgba(16,185,129,0.12); color:#10b981; }
+    .skill-card:nth-child(5) .skill-icon { background:rgba(245,158,11,0.12); color:#f59e0b; }
+    .skill-card:nth-child(6) .skill-icon { background:rgba(239,68,68,0.12); color:#ef4444; }
+
+    /* ===== EDUCATION ENHANCEMENTS ===== */
+    .edu-card-enhanced {
+      background:var(--bg-card); border-radius:var(--radius-lg); overflow:hidden;
+      border:1px solid var(--border-color); position:relative;
+      transition:var(--transition-normal);
+    }
+    .edu-card-enhanced:hover { border-color:var(--accent-primary); box-shadow:var(--shadow-lg),0 0 0 1px var(--border-glow); }
+    .edu-card-header {
+      background:linear-gradient(135deg,rgba(59,130,246,0.12),rgba(139,92,246,0.08));
+      border-bottom:1px solid var(--border-color); padding:2rem 2.5rem;
+      display:flex; align-items:center; gap:1.5rem;
+    }
+    .edu-icon-ring {
+      width:60px; height:60px; border-radius:50%; flex-shrink:0;
+      background:var(--accent-gradient); display:flex; align-items:center; justify-content:center;
+      font-size:1.6rem; box-shadow:0 0 20px var(--accent-glow);
+    }
+    .edu-card-body { padding:2rem 2.5rem; }
+    .edu-highlights { display:flex; flex-wrap:wrap; gap:0.6rem; margin-top:1.2rem; }
+    .edu-highlight-tag {
+      padding:0.3rem 0.9rem; border-radius:var(--radius-full);
+      background:var(--bg-secondary); border:1px solid var(--border-color);
+      font-size:0.78rem; color:var(--text-secondary); font-family:'Fira Code',monospace;
+      transition:var(--transition-fast);
+    }
+    .edu-highlight-tag:hover { border-color:var(--accent-primary); color:var(--accent-primary); }
+
+    /* ===== CONTACT ENHANCEMENTS ===== */
+    .contact-form-card {
+      background:var(--bg-card); border-radius:var(--radius-lg); padding:2rem;
+      border:1px solid var(--border-color);
+    }
+    .contact-form-card h3 { font-size:1.2rem; margin-bottom:0.4rem; }
+    .contact-form-card p { color:var(--text-muted); font-size:0.88rem; margin-bottom:1.2rem; }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    .form-group input:focus, .form-group textarea:focus { background:var(--bg-secondary); }
+    .form-submit {
+      width:100%; padding:0.9rem; background:var(--accent-gradient);
+      border:none; border-radius:var(--radius-md); color:white; font-weight:600;
+      font-size:0.95rem; cursor:pointer; transition:var(--transition-normal);
+      display:flex; align-items:center; justify-content:center; gap:0.6rem;
+    }
+    .form-submit:hover { transform:translateY(-2px); box-shadow:var(--shadow-glow),var(--shadow-md); }
+
+    /* ===== AVAILABILITY BANNER ===== */
+    .availability-banner {
+      background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(59,130,246,0.08));
+      border:1px solid rgba(16,185,129,0.25); border-radius:var(--radius-md);
+      padding:1.2rem 1.8rem; display:flex; align-items:center; gap:1rem;
+      margin-bottom:2rem;
+    }
+    .availability-dot { width:10px;height:10px;background:var(--success);border-radius:50%;flex-shrink:0;animation:badgePulse 1.5s ease infinite; }
+    .availability-text strong { color:var(--success); }
+    .availability-text { font-size:0.9rem; color:var(--text-secondary); }
+
+    /* ===== FOOTER WAVE ===== */
+    .footer-wave { overflow:hidden; line-height:0; }
+    .footer-wave svg { display:block; }
+    footer { background:var(--bg-secondary); padding:3rem 0 2rem; border-top:none; margin-top:0; }
+    .footer-social { display:flex; justify-content:center; gap:1rem; margin:1.5rem 0; }
+    .footer-social a {
+      width:40px;height:40px; border-radius:50%; border:1px solid var(--border-color);
+      display:flex;align-items:center;justify-content:center; color:var(--text-muted);
+      transition:var(--transition-normal); font-size:1rem;
+    }
+    .footer-social a:hover { border-color:var(--accent-primary); color:var(--accent-primary); background:rgba(59,130,246,0.08); transform:translateY(-3px); box-shadow:0 8px 20px rgba(59,130,246,0.2); }
+
+    /* ===== GLOW DIVIDER ===== */
+    .glow-divider {
+      width:100%; height:1px;
+      background:linear-gradient(90deg, transparent, var(--accent-primary), var(--accent-secondary), transparent);
+      opacity:0.3; margin:0;
+    }
+
+    /* ===== BACK TO TOP ===== */
+    .scroll-top { bottom:5rem; }
+
+    /* ===== MEDIA QUERY FIX ===== */
+    @media (max-width:768px) {
+      .form-row { grid-template-columns:1fr; }
+      .nav-download { display:none; }
+    }
+
+    /* ===== ACCESSIBILITY ===== */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      html { scroll-behavior: auto; }
+    }
+    
+    /* ===== PRINT ===== */
+    @media print {
+      .preloader, nav, .cursor, .cursor-follower, #particles-canvas, .bg-mesh,
+      .hero-visual, .btn, footer { display: none !important; }
+      body { background: white; color: black; cursor: auto; }
+      section { padding: 2rem 0; page-break-inside: avoid; }
+      .project-card, .skill-card { break-inside: avoid; border: 1px solid #ccc; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-content">
+      <div class="preloader-logo">0xAgamy</div>
+      <div class="preloader-bar"><div class="preloader-progress"></div></div>
+      <div class="preloader-dots"><span></span><span></span><span></span></div>
+      <div class="preloader-code" id="preloader-code">Initializing AI systems...</div>
+    </div>
+  </div>
+  
+  <!-- Scroll Progress -->
+  <div id="scroll-progress"></div>
+  
+  <!-- Background Elements -->
+  <div class="bg-mesh"></div>
+  <canvas id="particles-canvas"></canvas>
+  
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursor-follower"></div>
+  <div class="cursor-label" id="cursor-label"></div>
+  
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toast-message">Action completed!</span>
+  </div>
+  
+  <!-- Navbar -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="logo"><i class="fas fa-brain"></i><span>0xAgamy</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" class="nav-link active">About</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#education" class="nav-link">Education</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">🌙</button>
+        <a href="Agamy's_Resume_03.pdf" download class="nav-download" title="Download CV"><i class="fas fa-download"></i> Resume</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Scroll to Top -->
+  <button class="scroll-top" id="scrollTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+  
+  <!-- Hero -->
+  <section id="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-badge"><i class="fas fa-circle"></i><span>Available for Opportunities</span></div>
+        <h1 class="hero-title">
+          Mohamed <span class="gradient-text">Elagamy</span><br>
+          <span id="typed-text" class="typed-text"></span>
+        </h1>
+        <p class="hero-subtitle">AI Engineer & Machine Learning Specialist</p>
+        <p class="hero-description">
+          Crafting production-ready intelligent systems — RAG pipelines, real-time computer vision, 
+          NLP transformers, and scalable microservices that bridge research and deployment.
+        </p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn"><i class="fas fa-rocket"></i>View Projects</a>
+          <a href="#contact" class="btn outline"><i class="fas fa-paper-plane"></i>Get in Touch</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1"/>
+              <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:1"/>
+              <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:1"/>
+            </linearGradient>
+            <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.4"/>
+              <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0"/>
+            </radialGradient>
+            <filter id="glow"><feGaussianBlur stdDeviation="4" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <filter id="softGlow"><feGaussianBlur stdDeviation="8" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <!-- Outer glow circle -->
+          <circle cx="250" cy="250" r="200" fill="url(#glowGrad)" opacity="0.5">
+            <animate attributeName="opacity" values="0.3;0.6;0.3" dur="4s" repeatCount="indefinite"/>
+          </circle>
+          <!-- Outer ring -->
+          <circle cx="250" cy="250" r="180" fill="none" stroke="url(#grad1)" stroke-width="0.5" opacity="0.2" stroke-dasharray="8 6">
+            <animateTransform attributeName="transform" type="rotate" from="0 250 250" to="360 250 250" dur="30s" repeatCount="indefinite"/>
+          </circle>
+          <!-- Mid ring -->
+          <circle cx="250" cy="250" r="130" fill="none" stroke="url(#grad1)" stroke-width="0.5" opacity="0.15" stroke-dasharray="4 8">
+            <animateTransform attributeName="transform" type="rotate" from="360 250 250" to="0 250 250" dur="20s" repeatCount="indefinite"/>
+          </circle>
+          <!-- Connections - outer -->
+          <g stroke="url(#grad1)" stroke-width="1" opacity="0.35" fill="none">
+            <line x1="250" y1="70" x2="415" y2="165"><animate attributeName="opacity" values="0.35;0.7;0.35" dur="3s" repeatCount="indefinite"/></line>
+            <line x1="415" y1="165" x2="415" y2="335"/>
+            <line x1="415" y1="335" x2="250" y2="430"><animate attributeName="opacity" values="0.35;0.7;0.35" dur="3.5s" begin="0.5s" repeatCount="indefinite"/></line>
+            <line x1="250" y1="430" x2="85" y2="335"/>
+            <line x1="85" y1="335" x2="85" y2="165"><animate attributeName="opacity" values="0.35;0.7;0.35" dur="4s" begin="1s" repeatCount="indefinite"/></line>
+            <line x1="85" y1="165" x2="250" y2="70"/>
+          </g>
+          <!-- Connections - to center -->
+          <g stroke="url(#grad1)" stroke-width="1.5" opacity="0.5" fill="none">
+            <line x1="250" y1="70" x2="250" y2="250"/>
+            <line x1="415" y1="165" x2="250" y2="250"/>
+            <line x1="415" y1="335" x2="250" y2="250"/>
+            <line x1="250" y1="430" x2="250" y2="250"/>
+            <line x1="85" y1="335" x2="250" y2="250"/>
+            <line x1="85" y1="165" x2="250" y2="250"/>
+          </g>
+          <!-- Mid nodes -->
+          <g stroke="url(#grad1)" stroke-width="1" opacity="0.4" fill="none">
+            <line x1="250" y1="70" x2="170" y2="160"/>
+            <line x1="250" y1="70" x2="330" y2="160"/>
+            <line x1="415" y1="165" x2="330" y2="250"/>
+            <line x1="415" y1="335" x2="330" y2="250"/>
+            <line x1="250" y1="430" x2="170" y2="340"/>
+            <line x1="85" y1="165" x2="170" y2="250"/>
+          </g>
+          <!-- Mid-ring nodes -->
+          <circle cx="170" cy="160" r="6" fill="url(#grad1)" opacity="0.8" filter="url(#glow)"><animate attributeName="opacity" values="0.5;1;0.5" dur="2.5s" begin="0.3s" repeatCount="indefinite"/></circle>
+          <circle cx="330" cy="160" r="6" fill="url(#grad1)" opacity="0.8" filter="url(#glow)"><animate attributeName="opacity" values="0.5;1;0.5" dur="2.8s" begin="0.7s" repeatCount="indefinite"/></circle>
+          <circle cx="370" cy="250" r="6" fill="url(#grad1)" opacity="0.8" filter="url(#glow)"><animate attributeName="opacity" values="0.5;1;0.5" dur="2.2s" begin="1s" repeatCount="indefinite"/></circle>
+          <circle cx="330" cy="340" r="6" fill="url(#grad1)" opacity="0.8" filter="url(#glow)"><animate attributeName="opacity" values="0.5;1;0.5" dur="3s" begin="0.5s" repeatCount="indefinite"/></circle>
+          <circle cx="170" cy="340" r="6" fill="url(#grad1)" opacity="0.8" filter="url(#glow)"><animate attributeName="opacity" values="0.5;1;0.5" dur="2.6s" begin="1.2s" repeatCount="indefinite"/></circle>
+          <circle cx="130" cy="250" r="6" fill="url(#grad1)" opacity="0.8" filter="url(#glow)"><animate attributeName="opacity" values="0.5;1;0.5" dur="3.2s" begin="0.2s" repeatCount="indefinite"/></circle>
+          <!-- Outer nodes -->
+          <circle cx="250" cy="70" r="10" fill="url(#grad1)" filter="url(#glow)"><animateTransform attributeName="transform" type="translate" values="0,0;0,-5;0,0" dur="4s" repeatCount="indefinite"/></circle>
+          <circle cx="415" cy="165" r="9" fill="url(#grad1)" filter="url(#glow)"><animateTransform attributeName="transform" type="translate" values="0,0;4,-3;0,0" dur="5s" repeatCount="indefinite"/></circle>
+          <circle cx="415" cy="335" r="9" fill="url(#grad1)" filter="url(#glow)"><animateTransform attributeName="transform" type="translate" values="0,0;4,3;0,0" dur="4.5s" repeatCount="indefinite"/></circle>
+          <circle cx="250" cy="430" r="10" fill="url(#grad1)" filter="url(#glow)"><animateTransform attributeName="transform" type="translate" values="0,0;0,5;0,0" dur="4.2s" repeatCount="indefinite"/></circle>
+          <circle cx="85" cy="335" r="9" fill="url(#grad1)" filter="url(#glow)"><animateTransform attributeName="transform" type="translate" values="0,0;-4,3;0,0" dur="3.8s" repeatCount="indefinite"/></circle>
+          <circle cx="85" cy="165" r="9" fill="url(#grad1)" filter="url(#glow)"><animateTransform attributeName="transform" type="translate" values="0,0;-4,-3;0,0" dur="5.2s" repeatCount="indefinite"/></circle>
+          <!-- Pulse rings on center -->
+          <circle cx="250" cy="250" r="55" fill="none" stroke="url(#grad1)" stroke-width="1.5" opacity="0.5">
+            <animate attributeName="r" values="55;65;55" dur="2.5s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.5;0.1;0.5" dur="2.5s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="250" cy="250" r="75" fill="none" stroke="url(#grad1)" stroke-width="0.8" opacity="0.3">
+            <animate attributeName="r" values="75;90;75" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.3;0.05;0.3" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+          </circle>
+          <!-- Center node -->
+          <circle cx="250" cy="250" r="32" fill="url(#grad1)" filter="url(#softGlow)" opacity="0.9"/>
+          <text x="250" y="247" text-anchor="middle" fill="white" font-size="10" font-weight="700" font-family="Inter">NEURAL</text>
+          <text x="250" y="260" text-anchor="middle" fill="white" font-size="10" font-weight="700" font-family="Inter">NET</text>
+          <!-- Traveling dots on edges -->
+          <circle r="3.5" fill="#06b6d4" filter="url(#glow)" opacity="0.9">
+            <animateMotion dur="4s" repeatCount="indefinite" path="M250,70 L415,165 L415,335 L250,430 L85,335 L85,165 Z"/>
+          </circle>
+          <circle r="3" fill="#8b5cf6" filter="url(#glow)" opacity="0.9">
+            <animateMotion dur="5s" begin="-2s" repeatCount="indefinite" path="M250,250 L250,70 M250,250 L415,335 M250,250 L85,165"/>
+          </circle>
+        </svg>
+      </div>
+    </div>
+    <!-- Scroll hint -->
+    <div style="position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;color:var(--text-muted);font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;animation:fadeInUp 1s 1.2s ease both;">
+      <span>Scroll</span>
+      <div style="width:1.5px;height:40px;background:linear-gradient(to bottom,var(--accent-primary),transparent);animation:scrollPulse 2s ease-in-out infinite;"></div>
+    </div>
+  </section>
+  <style>
+    @keyframes scrollPulse { 0%,100%{opacity:0.3}50%{opacity:1} }
+  </style>
+  
+  <!-- About -->
+  <section id="about">
+    <div class="section-container">
+      <div class="section-header">
+
+        <h2 class="section-title">Building AI that matters</h2>
+        <p class="section-subtitle">Bridging research and real-world deployment</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-content">
+          <p>I'm a Machine Learning Engineer from Giza, Egypt, specializing in bridging the gap between research and real-world deployment. My focus is on building systems that are not just academically interesting — but actually work at scale.</p>
+          <p>From streaming real-time CV pipelines with Kafka and TimescaleDB, to end-to-end RAG systems with semantic search, to fine-tuning LLMs for Arabic NLP — I build the full stack of modern AI.</p>
+          <p>I recently graduated from Fayoum University (Faculty of Computers and AI, 2024) and I'm ready to bring this expertise to a high-impact team.</p>
+          <div class="about-stats">
+            <div class="stat-card"><div class="spotlight"></div><div class="stat-value" id="projects-count">6+</div><div class="stat-label">Projects Shipped</div></div>
+            <div class="stat-card"><div class="spotlight"></div><div class="stat-value" id="tech-count">15+</div><div class="stat-label">Technologies</div></div>
+            <div class="stat-card"><div class="spotlight"></div><div class="stat-value" id="years-count">2+</div><div class="stat-label">Years Learning</div></div>
+          </div>
+        </div>
+        <div style="background:var(--bg-card);border-radius:var(--radius-lg);padding:2rem;border:1px solid var(--border-color)">
+          <pre style="background:var(--bg-secondary);padding:1.2rem;border-radius:var(--radius-md);font-family:'Fira Code',monospace;font-size:0.85rem;color:var(--text-secondary);overflow-x:auto"><code><span style="color:#6b7fa3"># Mohamed Elagamy — Quick Profile</span>
+<span style="color:#06b6d4">role</span>      = <span style="color:#10b981">"AI / ML Engineer"</span>
+<span style="color:#06b6d4">focus</span>     = <span style="color:#f59e0b">["LLM","RAG", "CV", "NLP", "MLOps"]</span>
+<span style="color:#06b6d4">open_to</span>   = <span style="color:#f59e0b">["Remote", "On-site", "Contract"]</span>
+<span style="color:#06b6d4">status</span>    = <span style="color:#3b82f6">✓ Available</span></code></pre>
+          <div style="margin-top:1.5rem">
+            <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.8rem;font-family:'Fira Code',monospace;letter-spacing:0.05em;">// TECH STACK</p>
+            <div class="about-tech-grid">
+              <div class="about-tech-item"><i class="fas fa-fire"></i>PyTorch</div>
+              <div class="about-tech-item"><i class="fas fa-robot"></i>HuggingFace</div>
+              <div class="about-tech-item"><i class="fas fa-eye"></i>YOLO</div>
+              <div class="about-tech-item"><i class="fas fa-database"></i>MongoDB</div>
+              <div class="about-tech-item"><i class="fas fa-bolt"></i>FastAPI</div>
+              <div class="about-tech-item"><i class="fab fa-docker"></i>Docker</div>
+              <div class="about-tech-item"><i class="fas fa-stream"></i>Kafka</div>
+              <div class="about-tech-item"><i class="fas fa-link"></i>LangChain</div>
+              <div class="about-tech-item"><i class="fas fa-code-branch"></i>Git</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Projects -->
+  <section id="projects">
+    <div class="section-container">
+      <div class="section-header">
+<!--         <h2 class="badge">02 / Projects</h2> -->
+        <h2 class="section-title">What I've Built</h2>
+        <p class="section-subtitle">Production-grade AI systems with modern engineering</p>
+      </div>
+      <div class="projects-filter">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="cv">Computer Vision</button>
+        <button class="filter-btn" data-filter="nlp">NLP</button>
+        <button class="filter-btn" data-filter="rag">RAG</button>
+      </div>
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card featured" data-category="cv">
+          <span class="featured-badge">⭐ Featured</span>
+          <div class="spotlight"></div>
+          <div class="project-image" style="height:200px;background:#0c1526;display:flex;align-items:center;justify-content:center;">
+            <div class="project-img-bg" style="background:radial-gradient(ellipse at 30% 50%, #3b82f620 0%, #06b6d415 50%, transparent 70%), linear-gradient(135deg,#0c1526,#111e35);inset:0;position:absolute;"></div>
+            <svg width="180" height="120" viewBox="0 0 180 120" style="position:relative;z-index:2;" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="70" width="40" height="40" rx="3" fill="#3b82f620" stroke="#3b82f640" stroke-width="1"/>
+              <rect x="70" y="50" width="50" height="60" rx="3" fill="#8b5cf620" stroke="#8b5cf640" stroke-width="1"/>
+              <rect x="135" y="60" width="35" height="50" rx="3" fill="#06b6d420" stroke="#06b6d440" stroke-width="1"/>
+              <rect x="15" y="40" width="6" height="35" rx="2" fill="#3b82f6" opacity="0.7"/>
+              <rect x="19" y="30" width="20" height="4" rx="1" fill="#3b82f6" opacity="0.6"><animate attributeName="transform" type="rotate" values="0 29 42;-15 29 42;0 29 42" dur="3s" repeatCount="indefinite"/></rect>
+              <circle cx="30" cy="115" r="8" fill="none" stroke="#3b82f6" stroke-width="1.5" opacity="0.8"/>
+              <circle cx="45" cy="115" r="8" fill="none" stroke="#3b82f6" stroke-width="1.5" opacity="0.8"/>
+              <circle cx="30" cy="113" r="3" fill="#3b82f6" opacity="0.6"/>
+              <text x="90" y="30" text-anchor="middle" fill="#06b6d4" font-size="7" font-family="monospace" opacity="0.8">TRACKING: 3 OBJECTS</text>
+              <rect x="58" y="35" width="64" height="3" rx="1" fill="#06b6d420"/>
+              <rect x="58" y="35" width="45" height="3" rx="1" fill="#06b6d4" opacity="0.7"><animate attributeName="width" values="20;55;20" dur="2.5s" repeatCount="indefinite"/></rect>
+              <circle cx="80" cy="80" r="5" fill="#f59e0b" opacity="0.9"><animate attributeName="opacity" values="0.9;0.3;0.9" dur="1.5s" repeatCount="indefinite"/></circle>
+              <circle cx="100" cy="70" r="5" fill="#10b981" opacity="0.9"/>
+              <circle cx="150" cy="75" r="5" fill="#3b82f6" opacity="0.9"><animate attributeName="opacity" values="0.9;0.4;0.9" dur="2s" begin="0.5s" repeatCount="indefinite"/></circle>
+            </svg>
+          </div>
+          <div class="project-content">
+            <div class="project-header">
+              <h3 class="project-title">🏗️ Construction Equipment Tracker</h3>
+              <div class="project-links"><a href="https://github.com/0xAgamy/construction_activity_tracker" target="_blank"><i class="fab fa-github"></i></a></div>
+            </div>
+            <p class="project-description">Real-time microservices CV pipeline monitoring equipment, classifying work states, and streaming utilization analytics.</p>
+            <ul class="project-features">
+              <li>YOLOv12n + DeepSORT + Kafka + TimescaleDB</li>
+              <li>Region-based Optical Flow for articulated motion</li>
+              <li>Gradio dashboard for live streaming</li>
+            </ul>
+            <div class="project-tech"><span class="tech-badge">PyTorch</span><span class="tech-badge">YOLO</span><span class="tech-badge">DeepSORT</span><span class="tech-badge">Kafka</span><span class="tech-badge">Docker</span></span><span class="tech-badge">Gradio</span></div>
+            <div class="project-metric"><i class="fas fa-bolt"></i> Real-Time Processing</div>
+          </div>
+        </div>
+        <!-- Project 2 -->
+        <div class="project-card" data-category="rag">
+          <div class="spotlight"></div>
+          <div class="project-image" style="height:200px;background:#0c1526;display:flex;align-items:center;justify-content:center;">
+            <div class="project-img-bg" style="background:radial-gradient(ellipse at 70% 40%, #8b5cf625 0%, #3b82f615 60%, transparent 80%);inset:0;position:absolute;"></div>
+            <svg width="180" height="120" viewBox="0 0 180 120" style="position:relative;z-index:2;" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="30" width="50" height="60" rx="6" fill="#8b5cf620" stroke="#8b5cf650" stroke-width="1.5"/>
+              <text x="35" y="52" text-anchor="middle" fill="#8b5cf6" font-size="7" font-family="monospace">DOC</text>
+              <line x1="8" y1="42" x2="8" y2="78" stroke="#8b5cf6" stroke-width="2" opacity="0.5"/>
+              <line x1="11" y1="48" x2="11" y2="72" stroke="#8b5cf6" stroke-width="1.5" opacity="0.3"/>
+              <text x="35" y="66" text-anchor="middle" fill="#8b5cf670" font-size="5" font-family="monospace">CORPUS</text>
+              <path d="M65,60 L95,60" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.7"><animate attributeName="stroke-dashoffset" values="0;-14" dur="1s" repeatCount="indefinite"/></path>
+              <polygon points="93,56 100,60 93,64" fill="#3b82f6" opacity="0.8"/>
+              <rect x="100" y="40" width="40" height="40" rx="20" fill="#06b6d415" stroke="#06b6d440" stroke-width="1.5"/>
+              <text x="120" y="58" text-anchor="middle" fill="#06b6d4" font-size="7" font-family="monospace">VEC</text>
+              <text x="120" y="68" text-anchor="middle" fill="#06b6d4" font-size="7" font-family="monospace">TOR</text>
+              <path d="M145,60 L165,60" stroke="#10b981" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.7"><animate attributeName="stroke-dashoffset" values="0;-14" dur="1.2s" begin="0.3s" repeatCount="indefinite"/></path>
+              <polygon points="163,56 170,60 163,64" fill="#10b981" opacity="0.8"/>
+              <circle cx="20" cy="100" r="4" fill="#3b82f6" opacity="0.6"/>
+              <circle cx="35" cy="100" r="4" fill="#8b5cf6" opacity="0.6"/>
+              <circle cx="50" cy="100" r="4" fill="#06b6d4" opacity="0.6"/>
+              <text x="90" y="103" text-anchor="middle" fill="#10b981" font-size="6" font-family="monospace" opacity="0.8">SEMANTIC RETRIEVAL</text>
+            </svg>
+          </div>
+          <div class="project-content">
+            <div class="project-header">
+              <h3 class="project-title">🔍 RAG Q&A System</h3>
+              <div class="project-links"><a href="https://github.com/0xAgamy/RAG_mini" target="_blank"><i class="fab fa-github"></i></a></div>
+            </div>
+            <p class="project-description">End-to-end Retrieval-Augmented Generation platform for document Q&A. Supports local + cloud LLMs.</p>
+            <ul class="project-features">
+              <li>Semantic search with PgVector</li>
+              <li>Ollama abstraction layer for LLM routing</li>
+              <li>Celery for async background tasks</li>
+            </ul>
+            <div class="project-tech"><span class="tech-badge">FastAPI</span><span class="tech-badge">PgVector</span><span class="tech-badge">Ollama</span><span class="tech-badge">Docker</span><span class="tech-badge">Celery</span></div>
+            <div class="project-metric"><i class="fas fa-sync-alt"></i> Hybrid Retrieval</div>
+          </div>
+        </div>
+        <!-- Project 3 -->
+        <div class="project-card" data-category="nlp">
+          <div class="spotlight"></div>
+          <div class="project-image" style="height:200px;background:#0c1526;display:flex;align-items:center;justify-content:center;">
+            <div class="project-img-bg" style="background:radial-gradient(ellipse at 50% 60%, #06b6d420 0%, #3b82f610 60%, transparent 80%);inset:0;position:absolute;"></div>
+            <svg width="200" height="120" viewBox="0 0 200 120" style="position:relative;z-index:2;" xmlns="http://www.w3.org/2000/svg">
+              <text x="100" y="45" text-anchor="middle" fill="#06b6d4" font-size="28" font-family="serif" opacity="0.9">مرحبا</text>
+              <text x="100" y="65" text-anchor="middle" fill="#8b5cf6" font-size="10" font-family="serif" opacity="0.7">مَرْحَبَا</text>
+              <path d="M30,78 Q100,68 170,78" stroke="url(#grad1)" stroke-width="1" fill="none" opacity="0.5" stroke-dasharray="3 3"><animate attributeName="stroke-dashoffset" values="0;-12" dur="1.5s" repeatCount="indefinite"/></path>
+              <text x="100" y="95" text-anchor="middle" fill="#3b82f6" font-size="7" font-family="monospace" opacity="0.8">SEQ2SEQ TRANSFORMER</text>
+              <circle cx="40" cy="108" r="3" fill="#06b6d4" opacity="0.7"><animate attributeName="opacity" values="0.7;0.2;0.7" dur="1.8s" repeatCount="indefinite"/></circle>
+              <circle cx="100" cy="108" r="3" fill="#8b5cf6" opacity="0.7"><animate attributeName="opacity" values="0.7;0.2;0.7" dur="2.1s" begin="0.3s" repeatCount="indefinite"/></circle>
+              <circle cx="160" cy="108" r="3" fill="#3b82f6" opacity="0.7"><animate attributeName="opacity" values="0.7;0.2;0.7" dur="1.6s" begin="0.6s" repeatCount="indefinite"/></circle>
+            </svg>
+          </div>
+          <div class="project-content">
+            <div class="project-header">
+              <h3 class="project-title">🌙 Arabic Tashkeel Transformer</h3>
+              <div class="project-links"><a href="https://github.com/0xAgamy/arabic_tashkeel_transformer" target="_blank"><i class="fab fa-github"></i></a></div>
+            </div>
+            <p class="project-description">Character-level Seq2Seq Transformer for Arabic diacritization with custom tokenizer and REST API.</p>
+            <ul class="project-features">
+              <li>Modular architecture with checkpoint management</li>
+              <li>FastAPI endpoint for production inference</li>
+              <li>Evaluated using DER/CER metrics</li>
+            </ul>
+            <div class="project-tech"><span class="tech-badge">PyTorch</span><span class="tech-badge">Seq2Seq</span><span class="tech-badge">FastAPI</span><span class="tech-badge">Arabic NLP</span></div>
+            <div class="project-metric"><i class="fas fa-chart-line"></i> 3.5% DER</div>
+          </div>
+        </div>
+        <!-- Project 4 -->
+        <div class="project-card" data-category="nlp">
+          <div class="spotlight"></div>
+          <div class="project-image" style="height:200px;background:#0c1526;display:flex;align-items:center;justify-content:center;">
+            <div class="project-img-bg" style="background:radial-gradient(ellipse at 30% 60%, #f59e0b18 0%, #ef444410 60%, transparent 80%);inset:0;position:absolute;"></div>
+            <svg width="180" height="120" viewBox="0 0 180 120" style="position:relative;z-index:2;" xmlns="http://www.w3.org/2000/svg">
+              <text x="40" y="55" text-anchor="middle" fill="#f59e0b" font-size="30" opacity="0.85">🍕</text>
+              <text x="90" y="42" text-anchor="middle" fill="#f59e0b" font-size="20" opacity="0.7">🍝</text>
+              <text x="140" y="55" text-anchor="middle" fill="#ef4444" font-size="26" opacity="0.8">🍣</text>
+              <path d="M60,58 Q90,48 118,58" stroke="#f59e0b" stroke-width="1" fill="none" opacity="0.4" stroke-dasharray="3 2"/>
+              <rect x="40" y="68" width="100" height="22" rx="11" fill="#3b82f620" stroke="#3b82f640" stroke-width="1"/>
+              <text x="90" y="83" text-anchor="middle" fill="#3b82f6" font-size="7.5" font-family="monospace">GPT-2 CHATBOT</text>
+              <text x="90" y="104" text-anchor="middle" fill="#8b5cf6" font-size="6" font-family="monospace" opacity="0.7">NLP CLASSIFIER · TWITTER API</text>
+              <circle cx="15" cy="35" r="3" fill="#f59e0b" opacity="0.6"><animate attributeName="opacity" values="0.6;0.1;0.6" dur="2s" repeatCount="indefinite"/></circle>
+              <circle cx="165" cy="35" r="3" fill="#ef4444" opacity="0.6"><animate attributeName="opacity" values="0.6;0.1;0.6" dur="2.3s" begin="0.5s" repeatCount="indefinite"/></circle>
+            </svg>
+          </div>
+          <div class="project-content">
+            <div class="project-header">
+              <h3 class="project-title">🍕 Food Recommendation System</h3>
+              <div class="project-links"><a href="#" target="_blank"><i class="fab fa-github"></i></a></div>
+            </div>
+            <p class="project-description">Social-media-driven AI app using Twitter/X API, two-stage NLP classifier, and GPT-2 fine-tuned chatbot.</p>
+            <ul class="project-features">
+              <li>Binary + multi-class text classification pipeline</li>
+              <li>GPT-2 conversational agent for recommendations</li>
+              <li>Real-time user interaction with feedback loop</li>
+            </ul>
+            <div class="project-tech"><span class="tech-badge">GPT-2</span></span><span class="tech-badge">TensorFlow</span><span class="tech-badge">Hugging Face</span><span class="tech-badge">Twitter API</span><span class="tech-badge">NLP</span></div>
+            <div class="project-metric"><i class="fas fa-robot"></i> Graduation Project</div>
+          </div>
+        </div>
+        <!-- Project 5 -->
+        <div class="project-card" data-category="cv">
+          <div class="spotlight"></div>
+          <div class="project-image" style="height:200px;background:#0c1526;display:flex;align-items:center;justify-content:center;">
+            <div class="project-img-bg" style="background:radial-gradient(ellipse at 60% 40%, #10b98120 0%, #3b82f610 60%, transparent 80%);inset:0;position:absolute;"></div>
+            <svg width="180" height="120" viewBox="0 0 180 120" style="position:relative;z-index:2;" xmlns="http://www.w3.org/2000/svg">
+              <rect x="20" y="15" width="140" height="90" rx="4" fill="none" stroke="#3b82f630" stroke-width="1"/>
+              <rect x="30" y="25" width="50" height="40" rx="2" fill="none" stroke="#10b981" stroke-width="1.5" opacity="0.8"><animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/></rect>
+              <text x="55" y="50" text-anchor="middle" fill="#10b981" font-size="7" font-family="monospace" opacity="0.8">car 0.91</text>
+              <rect x="100" y="20" width="45" height="55" rx="2" fill="none" stroke="#f59e0b" stroke-width="1.5" opacity="0.8"><animate attributeName="opacity" values="0.8;0.3;0.8" dur="2.5s" begin="0.5s" repeatCount="indefinite"/></rect>
+              <text x="122" y="52" text-anchor="middle" fill="#f59e0b" font-size="7" font-family="monospace" opacity="0.8">person</text>
+              <text x="122" y="62" text-anchor="middle" fill="#f59e0b" font-size="7" font-family="monospace" opacity="0.8">0.87</text>
+              <text x="90" y="108" text-anchor="middle" fill="#3b82f6" font-size="7" font-family="monospace" opacity="0.8">YOLOv1 FROM SCRATCH · PyTorch</text>
+              <line x1="20" y1="78" x2="30" y2="78" stroke="#3b82f6" stroke-width="0.8" opacity="0.4"/>
+              <line x1="80" y1="78" x2="100" y2="78" stroke="#3b82f6" stroke-width="0.8" opacity="0.4"/>
+              <line x1="145" y1="78" x2="160" y2="78" stroke="#3b82f6" stroke-width="0.8" opacity="0.4"/>
+            </svg>
+          </div>
+          <div class="project-content">
+            <div class="project-header">
+              <h3 class="project-title">👁️ YOLOv1 Paper Replication</h3>
+              <div class="project-links"><a href="https://github.com/0xAgamy/YOLOv1-Paper-Replication" target="_blank"><i class="fab fa-github"></i></a></div>
+            </div>
+            <p class="project-description">From-scratch PyTorch implementation of the 2015 YOLOv1 paper. Full architecture + custom loss function.</p>
+            <ul class="project-features">
+              <li>Manual rebuild of 24 conv + 2 FC layer architecture</li>
+              <li>Original YOLO loss function from equations</li>
+              <li>Educational documentation on anchor-free detection</li>
+            </ul>
+            <div class="project-tech"><span class="tech-badge">PyTorch</span><span class="tech-badge">Object Detection</span><span class="tech-badge">Research</span></div>
+            <div class="project-metric"><i class="fas fa-graduation-cap"></i> Deep Learning Study</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Skills -->
+  <section id="skills">
+    <div class="section-container">
+      <div class="section-header">
+<!--         <span class="badge">03 / Skills</span> -->
+        <h2 class="section-title">Technical Arsenal</h2>
+        <p class="section-subtitle">Tools and technologies I use to build production AI</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="spotlight"></div>
+          <div class="skill-header"><div class="skill-icon"><i class="fas fa-brain"></i></div><h3 class="skill-title">ML / Deep Learning</h3></div>
+          <div class="skill-tags"><span class="skill-tag">PyTorch</span><span class="skill-tag">TensorFlow</span><span class="skill-tag">Hugging Face</span><span class="skill-tag">Scikit-learn</span><span class="skill-tag">Fine-Tuning</span></div>
+          <div class="skill-progress"><div class="skill-progress-header"><span>Proficiency</span><span class="skill-percent">95%</span></div><div class="skill-progress-bar"><div class="skill-progress-fill" data-width="95"></div></div></div>
+        </div>
+        <div class="skill-card">
+          <div class="spotlight"></div>
+          <div class="skill-header"><div class="skill-icon"><i class="fas fa-language"></i></div><h3 class="skill-title">LLMs & RAG</h3></div>
+          <div class="skill-tags"><span class="skill-tag">RAG Pipelines</span><span class="skill-tag">Prompt Engineering</span><span class="skill-tag">LoRA / QLoRA</span><span class="skill-tag">LangChain</span><span class="skill-tag">Ollama</span></div>
+          <div class="skill-progress"><div class="skill-progress-header"><span>Proficiency</span><span class="skill-percent">88%</span></div><div class="skill-progress-bar"><div class="skill-progress-fill" data-width="88"></div></div></div>
+        </div>
+        <div class="skill-card">
+          <div class="spotlight"></div>
+          <div class="skill-header"><div class="skill-icon"><i class="fas fa-eye"></i></div><h3 class="skill-title">Computer Vision</h3></div>
+          <div class="skill-tags"><span class="skill-tag">Image Classification</span><span class="skill-tag">Object Detection</span><span class="skill-tag">Object Tracking</span><span class="skill-tag">YOLO</span><span class="skill-tag">DeepSORT</span><span class="skill-tag">OpenCV</span><span class="skill-tag">Optical Flow</span><span class="skill-tag">Object Tracking</span></div>
+          <div class="skill-progress"><div class="skill-progress-header"><span>Proficiency</span><span class="skill-percent">90%</span></div><div class="skill-progress-bar"><div class="skill-progress-fill" data-width="90"></div></div></div>
+        </div>
+        <div class="skill-card">
+          <div class="spotlight"></div>
+          <div class="skill-header"><div class="skill-icon"><i class="fas fa-server"></i></div><h3 class="skill-title">Backend & Data</h3></div>
+          <div class="skill-tags"><span class="skill-tag">FastAPI</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">PgVector</span><span class="skill-tag">MongoDB</span><span class="skill-tag">TimescaleDB</span></div>
+          <div class="skill-progress"><div class="skill-progress-header"><span>Proficiency</span><span class="skill-percent">82%</span></div><div class="skill-progress-bar"><div class="skill-progress-fill" data-width="82"></div></div></div>
+        </div>
+        <div class="skill-card">
+          <div class="spotlight"></div>
+          <div class="skill-header"><div class="skill-icon"><i class="fas fa-cogs"></i></div><h3 class="skill-title">DevOps & Streaming</h3></div>
+          <div class="skill-tags"><span class="skill-tag">Docker</span><span class="skill-tag">Apache Kafka</span><span class="skill-tag">Celery</span><span class="skill-tag">Git</span><span class="skill-tag">MLOps</span></div>
+          <div class="skill-progress"><div class="skill-progress-header"><span>Proficiency</span><span class="skill-percent">80%</span></div><div class="skill-progress-bar"><div class="skill-progress-fill" data-width="80"></div></div></div>
+        </div>
+        <div class="skill-card">
+          <div class="spotlight"></div>
+          <div class="skill-header"><div class="skill-icon"><i class="fas fa-comments"></i></div><h3 class="skill-title">NLP</h3></div>
+          <div class="skill-tags"><span class="skill-tag">Text Classification</span><span class="skill-tag">NER</span><span class="skill-tag">Embeddings</span><span class="skill-tag">Semantic Search</span><span class="skill-tag">Seq2Seq</span></div>
+          <div class="skill-progress"><div class="skill-progress-header"><span>Proficiency</span><span class="skill-percent">88%</span></div><div class="skill-progress-bar"><div class="skill-progress-fill" data-width="88"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Education -->
+  <section id="education">
+    <div class="section-container">
+      <div class="section-header">
+<!--         <span class="badge">04 / Education</span> -->
+        <h2 class="section-title">Academic Background</h2>
+        <p class="section-subtitle">Formal training in AI and computer science</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="timeline-date">Sep 2020 — Jun 2024</span>
+          <h3 class="timeline-title">🎓 B.Sc. Computer Science & Artificial Intelligence</h3>
+          <p class="timeline-subtitle">Fayoum University — Faculty of Computers and Artificial Intelligence</p>
+          <p class="timeline-description">
+            Graduated with a specialization in AI and machine learning. Graduation project: 
+            AI-powered Food Recommendation System — integrating social media NLP, two-stage 
+            text classification, and a fine-tuned GPT-2 conversational agent.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact -->
+  <section id="contact">
+    <div class="section-container">
+      <div class="section-header">
+<!--         <span class="badge">05 / Contact</span> -->
+        <h2 class="section-title">Let's Build Something</h2>
+        <p class="section-subtitle">Open to AI/ML roles — remote, on-site, or contract</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Reach Out</h3>
+          <p class="contact-description">
+            I'm actively looking for AI/ML engineering roles. Whether it's remote, on-site, 
+            or contract — let's talk about how I can contribute to your team.
+          </p>
+          <div class="contact-links">
+            <a href="mailto:mohamedelagamy516@gmail.com" class="contact-link" id="copyEmail"><i class="fas fa-envelope"></i><span>mohamedelagamy516@gmail.com</span></a>
+            <a href="https://github.com/0xAgamy" target="_blank" class="contact-link"><i class="fab fa-github"></i><span>GitHub / 0xAgamy</span></a>
+            <a href="http://www.linkedin.com/in/mohamed-elagamy-b6643b321" target="_blank" class="contact-link"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
+            <a href="tel:+201551525472" class="contact-link"><i class="fas fa-phone"></i><span>+20 155 152 5472</span></a>
+          </div>
+        </div>
+        <div style="background:var(--bg-card);border-radius:var(--radius-lg);padding:2rem;border:1px solid var(--border-color);text-align:center">
+          <i class="fas fa-rocket" style="font-size:3rem;color:var(--accent-primary);margin-bottom:1rem"></i>
+          <h3 style="margin-bottom:0.5rem">Ready to Deploy</h3>
+          <p style="color:var(--text-muted);margin-bottom:1.5rem">Let's turn your AI vision into production reality.</p>
+          <a href="mailto:mohamedelagamy516@gmail.com" class="btn" style="width:100%;justify-content:center"><i class="fas fa-paper-plane"></i>Start a Conversation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">0xAgamy</div>
+      <p class="footer-description">Building intelligent systems that bridge research and production. Passionate about AI, open-source, and continuous learning.</p>
+      <div class="footer-links">
+        <a href="https://github.com/0xAgamy" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a href="http://www.linkedin.com/in/mohamed-elagamy-b6643b321" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="#hero"><i class="fas fa-arrow-up"></i> Back to Top</a>
+      </div>
+      <p class="footer-copyright">© <span id="year"></span> Mohamed Elagamy — AI Engineer</p>
+    </div>
+  </footer>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // ── Preloader with code typing
+      const codeLines = ['import torch', 'model = YOLOv1()', 'rag = RAGPipeline()', 'Ready. ✓'];
+      let cli = 0;
+      const pcEl = document.getElementById('preloader-code');
+      function typeCode() {
+        if (cli < codeLines.length) {
+          pcEl.textContent = '> ' + codeLines[cli++];
+          setTimeout(typeCode, 480);
+        }
+      }
+      setTimeout(typeCode, 300);
+      setTimeout(() => document.getElementById('preloader').classList.add('hidden'), 2400);
+
+      // ── Lenis Smooth Scroll
+      const lenis = new Lenis({ duration: 1.2, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+      function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+      requestAnimationFrame(raf);
+
+      // ── GSAP ScrollTrigger
+      gsap.registerPlugin(ScrollTrigger);
+
+      // ── Custom Cursor — RAF-based for buttery smooth tracking
+      const cursor = document.getElementById('cursor');
+      const follower = document.getElementById('cursor-follower');
+      const cursorLabel = document.getElementById('cursor-label');
+      let mX = window.innerWidth/2, mY = window.innerHeight/2;
+      let fX = mX, fY = mY;
+      let isMoving = false;
+
+      document.addEventListener('mousemove', e => {
+        mX = e.clientX; mY = e.clientY;
+        cursor.style.left = mX + 'px'; cursor.style.top = mY + 'px';
+        cursorLabel.style.left = mX + 'px'; cursorLabel.style.top = mY + 'px';
+        if (!isMoving) { isMoving = true; cursor.style.opacity = '1'; follower.style.opacity = '1'; }
+      });
+
+      // Separate RAF loop for smooth follower
+      (function animFollower() {
+        fX += (mX - fX) * 0.1;
+        fY += (mY - fY) * 0.1;
+        follower.style.left = fX + 'px';
+        follower.style.top  = fY + 'px';
+        requestAnimationFrame(animFollower);
+      })();
+
+      // Hover states with labels
+      const hoverTargets = [
+        { sel: 'a[href]',             label: 'OPEN',    cls: 'hover' },
+        { sel: 'button',              label: 'CLICK',   cls: 'hover' },
+        { sel: '.project-card',       label: 'VIEW',    cls: 'hover' },
+        { sel: '.skill-tag',          label: null,      cls: 'hover' },
+        { sel: '.contact-link',       label: 'CONTACT', cls: 'hover' },
+        { sel: '.about-tech-item',    label: null,      cls: 'hover' },
+        { sel: '.filter-btn',         label: 'FILTER',  cls: 'hover' },
+      ];
+      hoverTargets.forEach(({ sel, label, cls }) => {
+        document.querySelectorAll(sel).forEach(el => {
+          el.addEventListener('mouseenter', () => {
+            cursor.classList.add(cls); follower.classList.add(cls);
+            if (label) { cursorLabel.textContent = label; cursorLabel.classList.add('show'); }
+          });
+          el.addEventListener('mouseleave', () => {
+            cursor.classList.remove(cls); follower.classList.remove(cls);
+            cursorLabel.classList.remove('show');
+          });
+        });
+      });
+      document.addEventListener('mousedown', () => { cursor.classList.add('click'); follower.classList.add('click'); });
+      document.addEventListener('mouseup',   () => { cursor.classList.remove('click'); follower.classList.remove('click'); });
+      // Hide when leaving window
+      document.addEventListener('mouseleave', () => { cursor.style.opacity = '0'; follower.style.opacity = '0'; });
+      document.addEventListener('mouseenter', () => { cursor.style.opacity = '1'; follower.style.opacity = '1'; });
+
+      // ── Scroll Progress, Nav, Scroll-to-Top
+      const scrollTopBtn = document.getElementById('scrollTop');
+      window.addEventListener('scroll', () => {
+        const st = document.documentElement.scrollTop, sh = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        document.getElementById('scroll-progress').style.width = (st/sh*100)+'%';
+        document.getElementById('navbar').classList.toggle('scrolled', st > 50);
+        scrollTopBtn.classList.toggle('visible', st > 400);
+        document.querySelectorAll('section').forEach(sec => {
+          if (pageYOffset >= sec.offsetTop - 100) {
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            document.querySelector(`.nav-link[href="#${sec.id}"]`)?.classList.add('active');
+          }
+        });
+      });
+      scrollTopBtn.addEventListener('click', () => lenis.scrollTo(document.querySelector('#hero'), { duration: 1.2 }));
+
+      // ── Theme Toggle
+      const themeBtn = document.getElementById('themeToggle');
+      const html = document.documentElement;
+      themeBtn.addEventListener('click', () => {
+        const isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        themeBtn.textContent = isDark ? '🌙' : '☀️';
+      });
+
+      // ── Typed Effect
+      const typed = document.getElementById('typed-text'), roles = ['AI Engineer & ML Specialist', 'RAG Pipeline Architect', 'Computer Vision Engineer', 'NLP Transformer Builder'];
+      let ri = 0, ci = 0, del = false;
+      function type() {
+        const r = roles[ri];
+        typed.textContent = del ? r.substring(0, ci-1) : r.substring(0, ci+1);
+        ci += del ? -1 : 1;
+        let speed = del ? 35 : 75;
+        if (!del && ci === r.length) { speed = 2200; del = true; }
+        else if (del && ci === 0) { del = false; ri = (ri+1)%roles.length; speed = 400; }
+        setTimeout(type, speed);
+      }
+      setTimeout(type, 1000);
+
+      // ── GSAP Animations
+      gsap.utils.toArray('.section-header').forEach(h => gsap.from(h, { scrollTrigger: { trigger: h, start: 'top 85%' }, opacity: 0, y: 30, duration: 0.8, ease: 'power3.out' }));
+      gsap.from('.skill-card', { scrollTrigger: { trigger: '#skills', start: 'top 80%' }, opacity: 0, y: 40, duration: 0.6, stagger: 0.15, ease: 'power3.out' });
+      gsap.from('.project-card', { scrollTrigger: { trigger: '#projects', start: 'top 75%' }, opacity: 0, y: 50, duration: 0.7, stagger: 0.1, ease: 'power3.out' });
+      gsap.utils.toArray('.timeline-item').forEach((item, i) => ScrollTrigger.create({ trigger: item, start: 'top 85%', onEnter: () => { setTimeout(() => item.classList.add('visible'), i*200); }, once: true }));
+
+      // ── Skill Progress
+      document.querySelectorAll('.skill-progress-fill').forEach(bar => {
+        const w = bar.dataset.width;
+        ScrollTrigger.create({ trigger: bar, start: 'top 85%', onEnter: () => gsap.to(bar, { width: w+'%', duration: 1.5, ease: 'power2.out' }), once: true });
+      });
+
+      // ── Stat Counters
+      const counters = [{ el: document.getElementById('projects-count'), end: 5, suffix: '+' }, { el: document.getElementById('tech-count'), end: 20, suffix: '+' }, { el: document.getElementById('years-count'), end: 4, suffix: '+' }];
+      counters.forEach(c => ScrollTrigger.create({ trigger: c.el, start: 'top 85%', onEnter: () => animateCounter(c.el, 0, c.end, 1500, c.suffix), once: true }));
+      function animateCounter(el, start, end, dur, suffix='') {
+        const range = end - start, t0 = performance.now();
+        function upd(t) {
+          const p = Math.min((t-t0)/dur, 1), eased = 1 - Math.pow(1-p, 3), val = start + range*eased;
+          el.textContent = Math.round(val) + suffix;
+          if (p < 1) requestAnimationFrame(upd);
+        }
+        requestAnimationFrame(upd);
+      }
+
+      // ── Project Filter
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        document.querySelectorAll('.project-card').forEach(card => {
+          const cats = card.dataset.category.split(',');
+          const show = f==='all' || cats.includes(f);
+          gsap.to(card, { scale: show ? 1 : 0.9, opacity: show ? 1 : 0, duration: 0.4 });
+          card.style.display = show ? 'flex' : 'none';
+        });
+      }));
+
+      // ── Toast
+      function toast(msg, type='success') {
+        const t = document.getElementById('toast'), tm = document.getElementById('toast-message');
+        tm.textContent = msg; t.className = `toast ${type}`; t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 3000);
+      }
+
+      // ── Copy Email
+      document.getElementById('copyEmail').addEventListener('click', e => {
+        e.preventDefault();
+        navigator.clipboard.writeText('mohamedelagamy516@gmail.com').then(() => toast('📋 Email copied to clipboard!', 'success')).catch(() => toast('Copy failed', 'error'));
+      });
+
+      // ── Mobile Nav (hamburger ↔ X)
+      const navToggle = document.getElementById('navToggle');
+      navToggle.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.toggle('active');
+        navToggle.classList.toggle('open');
+      });
+      document.querySelectorAll('.nav-link').forEach(l => l.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('active');
+        navToggle.classList.remove('open');
+      }));
+
+      // ── Smooth Anchor Scroll
+      document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+        const h = a.getAttribute('href');
+        if (h !== '#') { e.preventDefault(); lenis.scrollTo(document.querySelector(h), { duration: 1.2 }); }
+      }));
+
+      // ── 3D Tilt for Projects
+      if (window.innerWidth > 768) document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+          const r = card.getBoundingClientRect(), x = e.clientX - r.left - r.width/2, y = e.clientY - r.top - r.height/2;
+          card.style.transform = `perspective(1000px) rotateX(${y/30}deg) rotateY(${-x/30}deg) scale(1.02)`;
+        });
+        card.addEventListener('mouseleave', () => card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)');
+      });
+
+      // ── Magnetic Buttons
+      document.querySelectorAll('.btn').forEach(btn => {
+        btn.addEventListener('mousemove', e => {
+          const r = btn.getBoundingClientRect(), x = e.clientX - r.left - r.width/2, y = e.clientY - r.top - r.height/2;
+          btn.style.transform = `translate(${x*0.1}px, ${y*0.1}px)`;
+        });
+        btn.addEventListener('mouseleave', () => btn.style.transform = 'translate(0,0)');
+      });
+
+      // ── Spotlight on cards
+      document.querySelectorAll('.project-card, .skill-card, .stat-card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+          const r = card.getBoundingClientRect();
+          card.style.setProperty('--spot-x', ((e.clientX - r.left) / r.width * 100) + '%');
+          card.style.setProperty('--spot-y', ((e.clientY - r.top) / r.height * 100) + '%');
+        });
+      });
+
+      // ── Particles Canvas
+      const canvas = document.getElementById('particles-canvas'), ctx = canvas.getContext('2d');
+      function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+      resize(); window.addEventListener('resize', resize);
+      const particles = [], pc = Math.min(60, Math.floor(window.innerWidth/18)), cd = 150;
+      class P {
+        constructor() { this.x = Math.random()*canvas.width; this.y = Math.random()*canvas.height; this.vx = (Math.random()-0.5)*0.4; this.vy = (Math.random()-0.5)*0.4; this.r = Math.random()*1.8+0.5; this.c = `hsla(${210+Math.random()*60},70%,60%,${0.25+Math.random()*0.35})`; }
+        update() { this.x += this.vx; this.y += this.vy; if (this.x<0||this.x>canvas.width) this.vx*=-1; if (this.y<0||this.y>canvas.height) this.vy*=-1; }
+        draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI*2); ctx.fillStyle = this.c; ctx.fill(); }
+      }
+      for (let i=0; i<pc; i++) particles.push(new P());
+      function animate() {
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        particles.forEach(p => { p.update(); p.draw(); });
+        for (let i=0; i<particles.length; i++) for (let j=i+1; j<particles.length; j++) {
+          const dx = particles[i].x-particles[j].x, dy = particles[i].y-particles[j].y, d = Math.sqrt(dx*dx+dy*dy);
+          if (d < cd) { ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y); ctx.strokeStyle = `rgba(59,130,246,${0.12*(1-d/cd)})`; ctx.lineWidth = 0.5; ctx.stroke(); }
+        }
+        requestAnimationFrame(animate);
+      }
+      animate();
+
+      // ── Year
+      document.getElementById('year').textContent = new Date().getFullYear();
+    });
+  </script>
+</body>
+</html>
