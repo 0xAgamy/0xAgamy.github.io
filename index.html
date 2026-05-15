@@ -558,8 +558,10 @@
       .hero-content { margin: 0 auto; }
       .hero-cta { justify-content: center; }
       .hero-visual { order: -1; margin-bottom: 2rem; }
-      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .about-stats { grid-template-columns: repeat(2, 1fr); }
+      .hero-tech-strip { justify-content: center; }
+      .hero-description { margin-left: auto; margin-right: auto; }
     }
     @media (max-width: 768px) {
       :root { --nav-height: 70px; --section-padding: 4rem; }
@@ -576,6 +578,26 @@
       .projects-grid { grid-template-columns: 1fr; }
       .cursor, .cursor-follower { display: none; }
       body { cursor: auto; }
+      /* Layout */
+      .section-container { padding: 0 1.2rem; }
+      .about-grid { gap: 2rem; }
+      .contact-grid { gap: 2rem; }
+      /* About tech grid: 2 cols instead of fixed 3 */
+      .about-tech-grid { grid-template-columns: repeat(2, 1fr); }
+      /* Hero visual: cap size on mobile */
+      .hero-visual svg { max-width: 300px; }
+      /* Education card padding */
+      .edu-card-header { padding: 1.5rem; }
+      .edu-card-body { padding: 1.5rem; }
+      /* Timeline tighten */
+      .timeline { padding-left: 1.5rem; }
+      .timeline-item { padding-left: 1.2rem; margin-bottom: 2rem; }
+      /* Availability banner: allow wrapping */
+      .availability-banner { flex-wrap: wrap; }
+      /* Project card padding */
+      .project-content { padding: 1.4rem; }
+      /* Contact link */
+      .contact-link { padding: 0.9rem 1rem; }
     }
     @media (max-width: 480px) {
       .hero-title { font-size: 2rem; }
@@ -583,6 +605,29 @@
       .btn { padding: 0.8rem 1.5rem; font-size: 0.95rem; }
       .about-stats { grid-template-columns: 1fr; }
       .section-title { font-size: 1.8rem; }
+      /* Tighter padding on very small screens */
+      .section-container { padding: 0 1rem; }
+      .nav-container { padding: 0 1rem; }
+      /* About tech grid: keep 2 cols */
+      .about-tech-grid { grid-template-columns: repeat(2, 1fr); font-size: 0.72rem; }
+      /* Education card: fully compact */
+      .edu-card-header { padding: 1.2rem; flex-wrap: wrap; gap: 1rem; }
+      .edu-card-body { padding: 1.2rem; }
+      .edu-icon-ring { width: 50px; height: 50px; font-size: 1.3rem; }
+      /* Timeline */
+      .timeline { padding-left: 1.2rem; }
+      .timeline-item { padding-left: 1rem; }
+      /* Hero visual */
+      .hero-visual svg { max-width: 240px; }
+      /* Project card */
+      .project-content { padding: 1.1rem; }
+      /* Contact */
+      .contact-link { padding: 0.8rem; gap: 0.75rem; }
+      /* Stack hero CTA buttons */
+      .hero-cta { flex-direction: column; align-items: center; }
+      /* Stat cards */
+      .stat-card { padding: 1.2rem 1rem; }
+      .stat-value { font-size: 1.8rem; }
     }
     
     /* ===== THEME TOGGLE ===== */
