@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mohamed Elagamy | AI Engineer & Machine Learning Specialist</title>
-  <meta name="description" content="AI Engineer specializing in RAG pipelines, real-time computer vision, NLP transformers, and production-ready ML systems."/>
-  <meta name="keywords" content="AI Engineer, Machine Learning, RAG, Computer Vision, NLP, PyTorch, FastAPI, Docker"/>
+  <title>Mohamed Elagamy | AI Engineer — Deep Learning & GenAI Specialist</title>
+  <meta name="description" content="AI Engineer specializing in RAG pipelines, agentic workflows (LangGraph, MCP), and foundation model fine-tuning (LoRA/QLoRA) for production-grade AI systems."/>
+  <meta name="keywords" content="AI Engineer, GenAI, RAG, LangGraph, Agentic AI, LoRA, QLoRA, FastAPI, Qdrant, PGVector, Docker"/>
   <meta name="author" content="Mohamed Elagamy"/>
   
   <!-- Open Graph / Social -->
-  <meta property="og:title" content="Mohamed Elagamy | AI Engineer"/>
-  <meta property="og:description" content="Building production-ready intelligent systems: RAG, CV, NLP, MLOps"/>
+  <meta property="og:title" content="Mohamed Elagamy | AI Engineer — Deep Learning & GenAI Specialist"/>
+  <meta property="og:description" content="Building production-grade RAG pipelines, agentic workflows, and fine-tuned foundation models."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://0xagamy.github.io"/>
   <meta property="og:image" content="https://0xagamy.github.io/og-image.png"/>
@@ -915,12 +915,6 @@
         <li><a href="#education" class="nav-link">Education</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
-      <div class="nav-actions">
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">🌙</button>
-        <a href="Agamy's_Resume_03.pdf" download class="nav-download" title="Download CV"><i class="fas fa-download"></i> Resume</a>
-        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-        </button>
       </div>
     </div>
   </nav>
@@ -937,10 +931,11 @@
           Mohamed <span class="gradient-text">Elagamy</span><br>
           <span id="typed-text" class="typed-text"></span>
         </h1>
-        <p class="hero-subtitle">AI Engineer & Machine Learning Specialist</p>
+        <p class="hero-subtitle">AI Engineer — Deep Learning & GenAI Specialist</p>
         <p class="hero-description">
-          Crafting production-ready intelligent systems — RAG pipelines, real-time computer vision, 
-          NLP transformers, and scalable microservices that bridge research and deployment.
+          Designing and shipping Retrieval-Augmented Generation pipelines, multi-agent LangGraph
+          systems, and fine-tuned foundation models (LoRA, QLoRA) — deployed as production-grade
+          REST APIs with full observability, backed by Qdrant, PGVector, and PostgreSQL.
         </p>
         <div class="hero-cta">
           <a href="#projects" class="btn"><i class="fas fa-rocket"></i>View Projects</a>
@@ -1048,7 +1043,7 @@
     @keyframes scrollPulse { 0%,100%{opacity:0.3}50%{opacity:1} }
   </style>
   
- <!-- About -->
+  <!-- About -->
   <section id="about">
     <div class="section-container">
       <div class="section-header">
@@ -1062,7 +1057,7 @@
           <p>From production-grade multi-agent platforms orchestrated with LangGraph and the Model Context Protocol (MCP), to hybrid retrieval systems backed by Qdrant and PGVector, to fine-tuning vision-language models for structured clinical extraction — I build systems that bridge research and deployment.</p>
           <p>I graduated from Fayoum University (Faculty of Computers and AI, 2024) and I'm ready to bring this expertise, along with strong FastAPI, Docker, and MLOps foundations, to a high-impact team.</p>
           <div class="about-stats">
-            <div class="stat-card"><div class="spotlight"></div><div class="stat-value" id="projects-count">3+</div><div class="stat-label">Production Systems</div></div>
+            <div class="stat-card"><div class="spotlight"></div><div class="stat-value" id="projects-count">8+</div><div class="stat-label">Projects Shipped</div></div>
             <div class="stat-card"><div class="spotlight"></div><div class="stat-value" id="tech-count">20+</div><div class="stat-label">Technologies</div></div>
             <div class="stat-card"><div class="spotlight"></div><div class="stat-value" id="years-count">2+</div><div class="stat-label">Years Learning</div></div>
           </div>
@@ -1102,50 +1097,14 @@
       </div>
       <div class="projects-filter">
         <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="agents">Agentic AI</button>
+        <button class="filter-btn" data-filter="rag">RAG</button>
+        <button class="filter-btn" data-filter="vision">Vision-Language</button>
         <button class="filter-btn" data-filter="cv">Computer Vision</button>
         <button class="filter-btn" data-filter="nlp">NLP</button>
-        <button class="filter-btn" data-filter="rag">RAG</button>
       </div>
       <div class="projects-grid">
         <!-- Project 1 -->
-         
-        <div class="project-card featured" data-category="cv">
-          <span class="featured-badge">⭐ Featured</span>
-          <div class="spotlight"></div>
-          <div class="project-image" style="height:200px;background:#0c1526;display:flex;align-items:center;justify-content:center;">
-            <div class="project-img-bg" style="background:radial-gradient(ellipse at 30% 50%, #3b82f620 0%, #06b6d415 50%, transparent 70%), linear-gradient(135deg,#0c1526,#111e35);inset:0;position:absolute;"></div>
-            <svg width="180" height="120" viewBox="0 0 180 120" style="position:relative;z-index:2;" xmlns="http://www.w3.org/2000/svg">
-              <rect x="10" y="70" width="40" height="40" rx="3" fill="#3b82f620" stroke="#3b82f640" stroke-width="1"/>
-              <rect x="70" y="50" width="50" height="60" rx="3" fill="#8b5cf620" stroke="#8b5cf640" stroke-width="1"/>
-              <rect x="135" y="60" width="35" height="50" rx="3" fill="#06b6d420" stroke="#06b6d440" stroke-width="1"/>
-              <rect x="15" y="40" width="6" height="35" rx="2" fill="#3b82f6" opacity="0.7"/>
-              <rect x="19" y="30" width="20" height="4" rx="1" fill="#3b82f6" opacity="0.6"><animate attributeName="transform" type="rotate" values="0 29 42;-15 29 42;0 29 42" dur="3s" repeatCount="indefinite"/></rect>
-              <circle cx="30" cy="115" r="8" fill="none" stroke="#3b82f6" stroke-width="1.5" opacity="0.8"/>
-              <circle cx="45" cy="115" r="8" fill="none" stroke="#3b82f6" stroke-width="1.5" opacity="0.8"/>
-              <circle cx="30" cy="113" r="3" fill="#3b82f6" opacity="0.6"/>
-              <text x="90" y="30" text-anchor="middle" fill="#06b6d4" font-size="7" font-family="monospace" opacity="0.8">TRACKING: 3 OBJECTS</text>
-              <rect x="58" y="35" width="64" height="3" rx="1" fill="#06b6d420"/>
-              <rect x="58" y="35" width="45" height="3" rx="1" fill="#06b6d4" opacity="0.7"><animate attributeName="width" values="20;55;20" dur="2.5s" repeatCount="indefinite"/></rect>
-              <circle cx="80" cy="80" r="5" fill="#f59e0b" opacity="0.9"><animate attributeName="opacity" values="0.9;0.3;0.9" dur="1.5s" repeatCount="indefinite"/></circle>
-              <circle cx="100" cy="70" r="5" fill="#10b981" opacity="0.9"/>
-              <circle cx="150" cy="75" r="5" fill="#3b82f6" opacity="0.9"><animate attributeName="opacity" values="0.9;0.4;0.9" dur="2s" begin="0.5s" repeatCount="indefinite"/></circle>
-            </svg>
-          </div>
-          <div class="project-content">
-            <div class="project-header">
-              <h3 class="project-title">🏗️ Construction Equipment Tracker</h3>
-              <div class="project-links"><a href="https://github.com/0xAgamy/construction_activity_tracker" target="_blank"><i class="fab fa-github"></i></a></div>
-            </div>
-            <p class="project-description">Real-time microservices CV pipeline monitoring equipment, classifying work states, and streaming utilization analytics.</p>
-            <ul class="project-features">
-              <li>YOLOv12n + DeepSORT + Kafka + TimescaleDB</li>
-              <li>Region-based Optical Flow for articulated motion</li>
-              <li>Gradio dashboard for live streaming</li>
-            </ul>
-            <div class="project-tech"><span class="tech-badge">PyTorch</span><span class="tech-badge">YOLO</span><span class="tech-badge">DeepSORT</span><span class="tech-badge">Kafka</span><span class="tech-badge">Docker</span></span><span class="tech-badge">Gradio</span></div>
-            <div class="project-metric"><i class="fas fa-bolt"></i> Real-Time Processing</div>
-          </div>
-        </div>
         <div class="project-card featured" data-category="agents,rag">
           <span class="featured-badge">⭐ Featured</span>
           <div class="spotlight"></div>
@@ -1169,7 +1128,7 @@
           <div class="project-content">
             <div class="project-header">
               <h3 class="project-title">🤖 Enterprise Agent Platform</h3>
-              <div class="project-links"><a href="https://github.com/0xAgamy/enterprise_agent_platform" target="_blank"><i class="fab fa-github"></i></a></div>
+              <div class="project-links"><a href="https://github.com/0xAgamy" target="_blank"><i class="fab fa-github"></i></a></div>
             </div>
             <p class="project-description">Production-oriented multi-agent commerce platform using LangGraph and the Model Context Protocol (MCP), coordinating Research, Shopping, and Fulfillment agents through stateful task graphs.</p>
             <ul class="project-features">
@@ -1203,24 +1162,26 @@
               <circle cx="20" cy="100" r="4" fill="#3b82f6" opacity="0.6"/>
               <circle cx="35" cy="100" r="4" fill="#8b5cf6" opacity="0.6"/>
               <circle cx="50" cy="100" r="4" fill="#06b6d4" opacity="0.6"/>
-              <text x="90" y="103" text-anchor="middle" fill="#10b981" font-size="6" font-family="monospace" opacity="0.8">SEMANTIC RETRIEVAL</text>
+              <text x="90" y="103" text-anchor="middle" fill="#10b981" font-size="6" font-family="monospace" opacity="0.8">OBSERVABILITY STACK</text>
             </svg>
           </div>
           <div class="project-content">
             <div class="project-header">
-              <h3 class="project-title">🔍 RAG Q&A System</h3>
-              <div class="project-links"><a href="https://github.com/0xAgamy/RAG_mini" target="_blank"><i class="fab fa-github"></i></a></div>
+              <h3 class="project-title">🔍 Production RAG Platform</h3>
+              <div class="project-links"><a href="https://github.com/0xAgamy" target="_blank"><i class="fab fa-github"></i></a></div>
             </div>
-            <p class="project-description">End-to-end Retrieval-Augmented Generation platform for document Q&A. Supports local + cloud LLMs.</p>
+            <p class="project-description">Fully containerized RAG backend with an MVC architecture, multi-provider LLM & vector store support, async data layer, and a complete Prometheus + Grafana monitoring stack across 8 Docker services.</p>
             <ul class="project-features">
-              <li>Semantic search with PgVector</li>
-              <li>Ollama abstraction layer for LLM routing</li>
-              <li>Celery for async background tasks</li>
+              <li>Clean MVC FastAPI backend with Pydantic-Settings & Dependency Injection</li>
+              <li>Factory pattern for LLM providers (OpenAI, Cohere, Ollama) & vector stores</li>
+              <li>Async data layer: PostgreSQL + Alembic, MongoDB via Motor, HNSW-indexed PGVector</li>
+              <li>Custom Prometheus metrics + Grafana dashboards for latency & throughput</li>
             </ul>
-            <div class="project-tech"><span class="tech-badge">FastAPI</span><span class="tech-badge">PgVector</span><span class="tech-badge">Ollama</span><span class="tech-badge">Docker</span><span class="tech-badge">Celery</span></div>
-            <div class="project-metric"><i class="fas fa-sync-alt"></i> Hybrid Retrieval</div>
+            <div class="project-tech"><span class="tech-badge">FastAPI</span><span class="tech-badge">PGVector</span><span class="tech-badge">Qdrant</span><span class="tech-badge">MongoDB</span><span class="tech-badge">Prometheus</span><span class="tech-badge">Grafana</span><span class="tech-badge">Docker Compose</span></div>
+            <div class="project-metric"><i class="fas fa-sync-alt"></i> Full Observability Stack</div>
           </div>
         </div>
+        <!-- Project 3 -->
         <div class="project-card" data-category="vision">
           <div class="spotlight"></div>
           <div class="project-image" style="height:200px;background:#0c1526;display:flex;align-items:center;justify-content:center;">
@@ -1243,7 +1204,7 @@
           <div class="project-content">
             <div class="project-header">
               <h3 class="project-title">🩺 Qwen3-VL Skin Lesion Extractor</h3>
-              <div class="project-links"><a href="https://huggingface.co/0xAgamy" target="_blank"><i class="fab fa-github"></i></a></div>
+              <div class="project-links"><a href="https://huggingface.co" target="_blank"><i class="fab fa-github"></i></a></div>
             </div>
             <p class="project-description">Vision-language model fine-tuned from Qwen3-VL-2B-Instruct to analyze dermatological images and extract structured clinical features in strict JSON format.</p>
             <ul class="project-features">
@@ -1255,7 +1216,45 @@
             <div class="project-metric"><i class="fas fa-chart-line"></i> ~0.918 BERTScore F1</div>
           </div>
         </div>
-        <!-- Project 3 -->
+        <!-- Project 4 -->
+        <div class="project-card" data-category="cv">
+          <div class="spotlight"></div>
+          <div class="project-image" style="height:200px;background:#0c1526;display:flex;align-items:center;justify-content:center;">
+            <div class="project-img-bg" style="background:radial-gradient(ellipse at 30% 50%, #3b82f620 0%, #06b6d415 50%, transparent 70%), linear-gradient(135deg,#0c1526,#111e35);inset:0;position:absolute;"></div>
+            <svg width="180" height="120" viewBox="0 0 180 120" style="position:relative;z-index:2;" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="70" width="40" height="40" rx="3" fill="#3b82f620" stroke="#3b82f640" stroke-width="1"/>
+              <rect x="70" y="50" width="50" height="60" rx="3" fill="#8b5cf620" stroke="#8b5cf640" stroke-width="1"/>
+              <rect x="135" y="60" width="35" height="50" rx="3" fill="#06b6d420" stroke="#06b6d440" stroke-width="1"/>
+              <rect x="15" y="40" width="6" height="35" rx="2" fill="#3b82f6" opacity="0.7"/>
+              <rect x="19" y="30" width="20" height="4" rx="1" fill="#3b82f6" opacity="0.6"><animate attributeName="transform" type="rotate" values="0 29 42;-15 29 42;0 29 42" dur="3s" repeatCount="indefinite"/></rect>
+              <circle cx="30" cy="115" r="8" fill="none" stroke="#3b82f6" stroke-width="1.5" opacity="0.8"/>
+              <circle cx="45" cy="115" r="8" fill="none" stroke="#3b82f6" stroke-width="1.5" opacity="0.8"/>
+              <circle cx="30" cy="113" r="3" fill="#3b82f6" opacity="0.6"/>
+              <text x="90" y="30" text-anchor="middle" fill="#06b6d4" font-size="7" font-family="monospace" opacity="0.8">TRACKING: 3 OBJECTS</text>
+              <rect x="58" y="35" width="64" height="3" rx="1" fill="#06b6d420"/>
+              <rect x="58" y="35" width="45" height="3" rx="1" fill="#06b6d4" opacity="0.7"><animate attributeName="width" values="20;55;20" dur="2.5s" repeatCount="indefinite"/></rect>
+              <circle cx="80" cy="80" r="5" fill="#f59e0b" opacity="0.9"><animate attributeName="opacity" values="0.9;0.3;0.9" dur="1.5s" repeatCount="indefinite"/></circle>
+              <circle cx="100" cy="70" r="5" fill="#10b981" opacity="0.9"/>
+              <circle cx="150" cy="75" r="5" fill="#3b82f6" opacity="0.9"><animate attributeName="opacity" values="0.9;0.4;0.9" dur="2s" begin="0.5s" repeatCount="indefinite"/></circle>
+            </svg>
+          </div>
+          <div class="project-content">
+            <div class="project-header">
+              <h3 class="project-title">🏗️ Construction Equipment Tracker</h3>
+              <div class="project-links"><a href="https://github.com/0xAgamy/construction_activity_tracker" target="_blank"><i class="fab fa-github"></i></a></div>
+            </div>
+            <p class="project-description">Real-time microservices CV pipeline monitoring equipment, classifying work states, and streaming utilization analytics.</p>
+            <ul class="project-features">
+              <li>YOLOv12n + DeepSORT + Kafka + TimescaleDB</li>
+              <li>Region-based Optical Flow for articulated motion</li>
+              <li>Gradio dashboard for live streaming</li>
+            </ul>
+            <div class="project-tech"><span class="tech-badge">PyTorch</span><span class="tech-badge">YOLO</span><span class="tech-badge">DeepSORT</span><span class="tech-badge">Kafka</span><span class="tech-badge">Docker</span><span class="tech-badge">Gradio</span></div>
+            <div class="project-metric"><i class="fas fa-bolt"></i> Real-Time Processing</div>
+          </div>
+        </div>
+        
+        <!-- Project 5-->
         <div class="project-card" data-category="nlp">
           <div class="spotlight"></div>
           <div class="project-image" style="height:200px;background:#0c1526;display:flex;align-items:center;justify-content:center;">
@@ -1285,7 +1284,7 @@
             <div class="project-metric"><i class="fas fa-chart-line"></i> 3.5% DER</div>
           </div>
         </div>
-        <!-- Project 4 -->
+        <!-- Project 7 -->
         <div class="project-card" data-category="nlp">
           <div class="spotlight"></div>
           <div class="project-image" style="height:200px;background:#0c1526;display:flex;align-items:center;justify-content:center;">
@@ -1313,11 +1312,11 @@
               <li>GPT-2 conversational agent for recommendations</li>
               <li>Real-time user interaction with feedback loop</li>
             </ul>
-            <div class="project-tech"><span class="tech-badge">GPT-2</span></span><span class="tech-badge">TensorFlow</span><span class="tech-badge">Hugging Face</span><span class="tech-badge">Twitter API</span><span class="tech-badge">NLP</span></div>
+            <div class="project-tech"><span class="tech-badge">GPT-2</span><span class="tech-badge">TensorFlow</span><span class="tech-badge">Hugging Face</span><span class="tech-badge">Twitter API</span><span class="tech-badge">NLP</span></div>
             <div class="project-metric"><i class="fas fa-robot"></i> Graduation Project</div>
           </div>
         </div>
-        <!-- Project 5 -->
+        <!-- Project 8 -->
         <div class="project-card" data-category="cv">
           <div class="spotlight"></div>
           <div class="project-image" style="height:200px;background:#0c1526;display:flex;align-items:center;justify-content:center;">
@@ -1412,8 +1411,8 @@
           <p class="timeline-subtitle">Fayoum University — Faculty of Computers and Artificial Intelligence</p>
           <p class="timeline-description">
             Graduated with a specialization in AI and machine learning. Graduation project: 
-            AI-powered Food Recommendation System — integrating social media NLP, two-stage 
-            text classification, and a fine-tuned GPT-2 conversational agent.
+            an AI-powered recommendation system integrating NLP classification and fine-tuning 
+            techniques — end-to-end ownership from research to production-ready demo.
           </p>
         </div>
       </div>
@@ -1567,7 +1566,7 @@
       });
 
       // ── Typed Effect
-      const typed = document.getElementById('typed-text'), roles = ['AI Engineer & ML Specialist', 'RAG Pipeline Architect', 'Computer Vision Engineer', 'NLP Transformer Builder'];
+      const typed = document.getElementById('typed-text'), roles = ['AI Engineer & GenAI Specialist', 'RAG Pipeline Architect', 'Multi-Agent Systems Builder', 'LLM Fine-Tuning Engineer'];
       let ri = 0, ci = 0, del = false;
       function type() {
         const r = roles[ri];
@@ -1593,7 +1592,7 @@
       });
 
       // ── Stat Counters
-      const counters = [{ el: document.getElementById('projects-count'), end: 5, suffix: '+' }, { el: document.getElementById('tech-count'), end: 20, suffix: '+' }, { el: document.getElementById('years-count'), end: 4, suffix: '+' }];
+      const counters = [{ el: document.getElementById('projects-count'), end: 8, suffix: '+' }, { el: document.getElementById('tech-count'), end: 20, suffix: '+' }, { el: document.getElementById('years-count'), end: 2, suffix: '+' }];
       counters.forEach(c => ScrollTrigger.create({ trigger: c.el, start: 'top 85%', onEnter: () => animateCounter(c.el, 0, c.end, 1500, c.suffix), once: true }));
       function animateCounter(el, start, end, dur, suffix='') {
         const range = end - start, t0 = performance.now();
